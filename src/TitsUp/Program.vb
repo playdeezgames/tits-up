@@ -5,13 +5,13 @@ Imports Microsoft.Xna.Framework.Input
 Imports TU.Business
 Imports TU.Presentation
 Module Program
-    Private Const GameTitle = "Starve!!"
+    Private Const GameTitle = "Tits Up!!"
     Sub Main(args As String())
         Using host As New Host(
             GameTitle,
             New GameController(
-                New StarveSettings(),
-                New StarveContext(fontFileNames, (ViewWidth, ViewHeight))),
+                New TitsUpSettings(),
+                New TitsUpContext(fontFileNames, (ViewWidth, ViewHeight))),
             (ViewWidth, ViewHeight),
             hueTable,
             commandTable,

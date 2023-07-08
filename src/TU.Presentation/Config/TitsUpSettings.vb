@@ -2,7 +2,7 @@
 Imports System.Text.Json
 Imports AOS.UI
 
-Public Class StarveSettings
+Public Class TitsUpSettings
     Implements ISettings
     Sub New()
         Dim cfg = ReadConfig()
@@ -14,11 +14,11 @@ Public Class StarveSettings
     Public Property FullScreen As Boolean Implements ISettings.FullScreen
     Public Property Volume As Single Implements ISettings.Volume
     Private Const ConfigFileName = "config.json"
-    Private Shared Function ReadConfig() As StarveConfig
+    Private Shared Function ReadConfig() As TitsUpConfig
         Try
-            Return JsonSerializer.Deserialize(Of StarveConfig)(File.ReadAllText(ConfigFileName))
+            Return JsonSerializer.Deserialize(Of TitsUpConfig)(File.ReadAllText(ConfigFileName))
         Catch ex As Exception
-            Return New StarveConfig() With
+            Return New TitsUpConfig() With
             {
                 .FullScreen = False,
                 .SfxVolume = 0.5,
@@ -28,6 +28,6 @@ Public Class StarveSettings
         End Try
     End Function
     Public Sub Save() Implements ISettings.Save
-        File.WriteAllText(ConfigFileName, JsonSerializer.Serialize(New StarveConfig With {.SfxVolume = Volume, .WindowHeight = WindowSize.Item2, .WindowWidth = WindowSize.Item1, .FullScreen = FullScreen}))
+        File.WriteAllText(ConfigFileName, JsonSerializer.Serialize(New TitsUpConfig With {.SfxVolume = Volume, .WindowHeight = WindowSize.Item2, .WindowWidth = WindowSize.Item1, .FullScreen = FullScreen}))
     End Sub
 End Class

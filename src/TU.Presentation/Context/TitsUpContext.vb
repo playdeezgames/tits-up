@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Public Class StarveContext
+Public Class TitsUpContext
     Inherits UIContext(Of IGameContext)
 
     Public Sub New(fontFilenames As IReadOnlyDictionary(Of String, String), viewSize As (Integer, Integer))

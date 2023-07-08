@@ -1,4 +1,4 @@
-﻿Friend Class StarveConfig
+﻿Friend Class TitsUpConfig
     Public Property WindowWidth As Integer
     Public Property WindowHeight As Integer
     Public Property FullScreen As Boolean

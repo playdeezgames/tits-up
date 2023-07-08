@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="monochrome_tilemap_packed.png" />
+    <None Remove="source.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="monochrome_tilemap_packed.png">
+    <Content Include="source.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
