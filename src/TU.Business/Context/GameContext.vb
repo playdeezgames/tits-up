@@ -30,6 +30,10 @@ Public Class GameContext
         World.Save(filename)
     End Sub
 
+    Public Sub Move(delta As (Integer, Integer)) Implements IGameContext.Move
+        World.Avatar.Move(delta)
+    End Sub
+
     Public Function GetOffsetX(viewWidth As Integer, cellWidth As Integer) As Integer Implements IGameContext.GetOffsetX
         Return viewWidth \ 2 - cellWidth \ 2 - World.Avatar.Cell.Column * cellWidth
     End Function

@@ -10,6 +10,7 @@ Public Interface IGameContext
     Function GetTerrainGlyphAndColor(location As (Integer, Integer)) As (Char, Integer)
     Function GetCharacterGlyphAndColor(location As (Integer, Integer)) As (Char, Integer)
     Function HasCharacter(location As (Integer, Integer)) As Boolean
+    Sub Move(delta As (Integer, Integer))
     ReadOnly Property MapColumnCount As Integer
     ReadOnly Property MapRowCount As Integer
 End Interface

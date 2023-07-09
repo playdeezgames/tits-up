@@ -9,6 +9,14 @@
         Select Case cmd
             Case Command.B
                 SetState(GameMenu)
+            Case Command.Up
+                SetState(GameState.MoveNorth)
+            Case Command.Down
+                SetState(GameState.MoveSouth)
+            Case Command.Left
+                SetState(GameState.MoveWest)
+            Case Command.Right
+                SetState(GameState.MoveEast)
         End Select
     End Sub
 
