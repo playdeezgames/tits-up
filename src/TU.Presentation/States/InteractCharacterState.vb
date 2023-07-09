@@ -6,11 +6,11 @@
     End Sub
 
     Protected Overrides Sub OnActivateMenuItem(value As (String, String))
-        Game.DoTargetCharacterVerb(value.Item2)
+        Game.TargetCharacter.DoVerb(value.Item2)
         SetState(Neutral)
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        Return Game.TargetCharacterVerbs.ToList
+        Return Game.TargetCharacter.Verbs.ToList
     End Function
 End Class

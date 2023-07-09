@@ -14,7 +14,7 @@
     End Sub
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        If Game.HasTargetCharacter Then
+        If Game.TargetCharacter.Exists Then
             SetState(GameState.InteractCharacter)
             Return
         End If
