@@ -10,13 +10,13 @@ Public Class TitsUpContext
     Public Overrides ReadOnly Property AvailableWindowSizes As IEnumerable(Of (Integer, Integer))
         Get
             Return {
-                (ViewWidth * 5 \ 2, ViewHeight * 5 \ 2),
+                (ViewWidth * 3, ViewHeight * 3),
                 (ViewWidth * 5, ViewHeight * 5),
-                (ViewWidth * 15 \ 2, ViewHeight * 15 \ 2),
+                (ViewWidth * 8, ViewHeight * 8),
                 (ViewWidth * 10, ViewHeight * 10),
-                (ViewWidth * 25 \ 2, ViewHeight * 25 \ 2),
+                (ViewWidth * 13, ViewHeight * 13),
                 (ViewWidth * 15, ViewHeight * 15),
-                (ViewWidth * 35 \ 2, ViewHeight * 35 \ 2),
+                (ViewWidth * 18, ViewHeight * 18),
                 (ViewWidth * 20, ViewHeight * 20)
                 }
         End Get
