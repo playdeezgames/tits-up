@@ -116,4 +116,12 @@
             Unequip(equipSlot)
         Next
     End Sub
+
+    Public Sub RemoveStatistic(statisticType As String) Implements ICharacter.RemoveStatistic
+        CharacterData.Statistics.Remove(statisticType)
+    End Sub
+
+    Public Function HasStatistic(statisticType As String) As Boolean Implements ICharacter.HasStatistic
+        Return CharacterData.Statistics.ContainsKey(statisticType)
+    End Function
 End Class

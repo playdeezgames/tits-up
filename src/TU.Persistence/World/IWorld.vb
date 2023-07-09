@@ -6,6 +6,7 @@ Public Interface IWorld
     ReadOnly Property CurrentMessage As IMessage
     Property Avatar As ICharacter
     ReadOnly Property Characters As IEnumerable(Of ICharacter)
+    ReadOnly Property Character(id As Integer) As ICharacter
     ReadOnly Property HasMessages As Boolean
     Function CreateMessage() As IMessage
     Function CreateItem(itemType As String) As IItem

@@ -14,6 +14,10 @@
     End Sub
     Public Overrides Sub OnStart()
         MyBase.OnStart()
+        If Game.HasTargetCharacter Then
+            SetState(GameState.InteractCharacter)
+            Return
+        End If
         SetState(Navigation)
     End Sub
 End Class

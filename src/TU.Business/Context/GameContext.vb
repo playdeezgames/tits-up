@@ -15,6 +15,12 @@ Public Class GameContext
         End Get
     End Property
 
+    Public ReadOnly Property HasTargetCharacter As Boolean Implements IGameContext.HasTargetCharacter
+        Get
+            Return World.Avatar.TargetCharacter IsNot Nothing
+        End Get
+    End Property
+
     Private Property World As IWorld
     Public Sub Embark() Implements IGameContext.Embark
         World = New World(New Data.WorldData)
@@ -58,5 +64,8 @@ Public Class GameContext
 
     Public Function GetAvatarStatistic(statisticType As String) As Integer Implements IGameContext.GetAvatarStatistic
         Return World.Avatar.Statistic(statisticType)
+    End Function
+    Public Function TargetCharacterVerbs() As IEnumerable(Of (String, String)) Implements IGameContext.TargetCharacterVerbs
+        Return World.Avatar.TargetCharacter.Verbs.Select(Function(x) (x.ToVerbTypeDescriptor.Name, x))
     End Function
 End Class

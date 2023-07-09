@@ -5,7 +5,7 @@ Imports TU.Data
 Public Class World
     Inherits WorldDataClient
     Implements IWorld
-    Public Sub New(worldData As Data.WorldData)
+    Public Sub New(worldData As WorldData)
         MyBase.New(worldData)
     End Sub
 
@@ -39,6 +39,12 @@ Public Class World
                 Return New Message(WorldData, 0)
             End If
             Return Nothing
+        End Get
+    End Property
+
+    Public ReadOnly Property Character(id As Integer) As ICharacter Implements IWorld.Character
+        Get
+            Return New Character(WorldData, id)
         End Get
     End Property
 
