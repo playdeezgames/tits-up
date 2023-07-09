@@ -7,10 +7,19 @@ Public Class GameContext
             Return World.Avatar.TargetCharacter IsNot Nothing
         End Get
     End Property
-
     Public ReadOnly Property Map As IGameMapContext Implements IGameContext.Map
         Get
             Return New GameMapContext(World)
+        End Get
+    End Property
+    Public ReadOnly Property Avatar As IGameAvatarContext Implements IGameContext.Avatar
+        Get
+            Return New GameAvatarContext(World)
+        End Get
+    End Property
+    Public ReadOnly Property TargetCharacter As IGameTargetCharacterContext Implements IGameContext.TargetCharacter
+        Get
+            Return New GameTargetCharacterContext(World)
         End Get
     End Property
 

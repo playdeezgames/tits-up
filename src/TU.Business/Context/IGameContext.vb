@@ -4,6 +4,8 @@
     Sub Load(filename As String)
     Sub Save(filename As String)
     ReadOnly Property Map As IGameMapContext
+    ReadOnly Property Avatar As IGameAvatarContext
+    ReadOnly Property TargetCharacter As IGameTargetCharacterContext
 
     Sub Move(delta As (Integer, Integer))
     Function GetAvatarStatistic(statisticType As String) As Integer

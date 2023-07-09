@@ -1,6 +1,6 @@
 ﻿Friend Class GameMapContext
     Implements IGameMapContext
-    Private world As Persistence.IWorld
+    Private ReadOnly world As Persistence.IWorld
     Public Sub New(world As Persistence.IWorld)
         Me.world = world
     End Sub
