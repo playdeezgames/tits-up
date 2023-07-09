@@ -2,9 +2,11 @@
 Imports TU.Persistence
 
 Friend Module TerrainTypes
+    Friend Const Empty = "Empty"
     Private ReadOnly descriptors As IReadOnlyDictionary(Of String, TerrainTypeDescriptor) =
         New Dictionary(Of String, TerrainTypeDescriptor) From
         {
+            {Empty, New TerrainTypeDescriptor("Empty", ChrW(0), Black)}
         }
 
     <Extension>

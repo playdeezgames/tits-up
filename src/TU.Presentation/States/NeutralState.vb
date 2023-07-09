@@ -12,4 +12,8 @@
     Public Overrides Sub Render(displayBuffer As IPixelSink)
         Throw New NotImplementedException()
     End Sub
+    Public Overrides Sub OnStart()
+        MyBase.OnStart()
+        SetState(Navigation)
+    End Sub
 End Class
