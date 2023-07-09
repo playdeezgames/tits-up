@@ -36,17 +36,17 @@
     End Sub
 
     Private Sub DrawMap(displayBuffer As IPixelSink)
-        Dim offsetX As Integer = Game.GetMapOffsetX(ViewWidth, CellWidth)
-        Dim offsetY As Integer = Game.GetMapOffsetY(ViewHeight, CellHeight)
+        Dim offsetX As Integer = Game.Map.GetOffsetX(ViewWidth, CellWidth)
+        Dim offsetY As Integer = Game.Map.GetOffsetY(ViewHeight, CellHeight)
         Dim plotX = offsetX
-        For Each column In Enumerable.Range(0, Game.MapColumnCount)
+        For Each column In Enumerable.Range(0, Game.Map.Columns)
             If plotX >= ViewWidth Then
                 Exit For
             ElseIf plotX <= -CellWidth Then
                 Continue For
             End If
             Dim plotY = offsetY
-            For Each row In Enumerable.Range(0, Game.MapRowCount)
+            For Each row In Enumerable.Range(0, Game.Map.Rows)
                 If plotY >= ViewHeight Then
                     Exit For
                 ElseIf plotY <= -CellHeight Then
@@ -62,10 +62,10 @@
     Private Sub DrawCell(displayBuffer As IPixelSink, plot As (Integer, Integer), location As (Integer, Integer))
         displayBuffer.Fill(plot, (CellWidth, CellHeight), Black)
         Dim font = Context.Font(TitsUpFont)
-        Dim glyphAndColor = Game.GetTerrainGlyphAndColor(location)
+        Dim glyphAndColor = Game.Map.TerrainGlyphAndColor(location)
         font.WriteText(displayBuffer, plot, glyphAndColor.Item1, glyphAndColor.Item2)
-        If Game.HasCharacter(location) Then
-            glyphAndColor = Game.GetCharacterGlyphAndColor(location)
+        If Game.Map.HasCharacter(location) Then
+            glyphAndColor = Game.Map.CharacterGlyphAndColor(location)
             font.WriteText(displayBuffer, plot, glyphAndColor.Item1, glyphAndColor.Item2)
         End If
     End Sub
