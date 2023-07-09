@@ -7,11 +7,9 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TitsUp", "TitsUp\TitsUp.vbp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_STUFF", "_STUFF", "{11358AC6-CE58-4586-B380-F14F90818D4E}"
 	ProjectSection(SolutionItems) = preProject
-		..\SourceMaterial\colored_tilemap.png = ..\SourceMaterial\colored_tilemap.png
-		..\SourceMaterial\monochrome_tilemap.png = ..\SourceMaterial\monochrome_tilemap.png
 		..\README.md = ..\README.md
-		..\SourceMaterial\romfont8x8.png = ..\SourceMaterial\romfont8x8.png
 		..\shippit.sh = ..\shippit.sh
+		FontMaker\source.png = FontMaker\source.png
 	EndProjectSection
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "AOS.UI", "AOS.UI\AOS.UI.vbproj", "{0E6494E8-72A7-4D27-BC6F-8C89D963827D}"

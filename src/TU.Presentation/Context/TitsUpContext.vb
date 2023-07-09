@@ -10,25 +10,23 @@ Public Class TitsUpContext
     Public Overrides ReadOnly Property AvailableWindowSizes As IEnumerable(Of (Integer, Integer))
         Get
             Return {
+                (ViewWidth * 5 \ 2, ViewHeight * 5 \ 2),
                 (ViewWidth * 5, ViewHeight * 5),
                 (ViewWidth * 15 \ 2, ViewHeight * 15 \ 2),
                 (ViewWidth * 10, ViewHeight * 10),
+                (ViewWidth * 25 \ 2, ViewHeight * 25 \ 2),
                 (ViewWidth * 15, ViewHeight * 15),
-                (ViewWidth * 20, ViewHeight * 20),
-                (ViewWidth * 25, ViewHeight * 25),
-                (ViewWidth * 30, ViewHeight * 30),
-                (ViewWidth * 35, ViewHeight * 35),
-                (ViewWidth * 40, ViewHeight * 40)
+                (ViewWidth * 35 \ 2, ViewHeight * 35 \ 2),
+                (ViewWidth * 20, ViewHeight * 20)
                 }
         End Get
     End Property
 
     Public Overrides Sub ShowSplashContent(displayBuffer As IPixelSink, font As Font)
         Dim text = "Tits Up!!"
-        Dim bigFont = Me.Font(Font4x6)
-        Dim x = ViewWidth \ 2 - bigFont.TextWidth(text) \ 2
-        Dim y = ViewHeight \ 2 - bigFont.Height \ 2
-        With bigFont
+        Dim x = ViewWidth \ 2 - font.TextWidth(text) \ 2
+        Dim y = ViewHeight \ 2 - font.Height \ 2
+        With font
             .WriteText(displayBuffer, (x + 1, y - 1), text, Hue.Brown)
             .WriteText(displayBuffer, (x + 1, y), text, Hue.Brown)
             .WriteText(displayBuffer, (x + 1, y + 1), text, Hue.Brown)
@@ -46,10 +44,10 @@ Public Class TitsUpContext
     Public Overrides Sub ShowAboutContent(displayBuffer As IPixelSink, font As Font)
         With font
             .WriteText(displayBuffer, (0, 0), "About Tits Up!!", Hue.Orange)
-            .WriteText(displayBuffer, (0, font.Height * 2), "Art:", Hue.White)
-            .WriteText(displayBuffer, (0, font.Height * 3), "https://opengameart.org/content/micro-roguelike", Hue.White)
+            '.WriteText(displayBuffer, (0, font.Height * 2), "Art:", Hue.White)
+            '.WriteText(displayBuffer, (0, font.Height * 3), "https://opengameart.org/content/micro-roguelike", Hue.White)
             .WriteText(displayBuffer, (0, font.Height * 5), "A Production of TheGrumpyGameDev", Hue.White)
-            .WriteText(displayBuffer, (0, font.Height * 7), "For Retrograde Jam 4, July 1-9, 2023", Hue.White)
+            .WriteText(displayBuffer, (0, font.Height * 7), "For Weeksause (July 2023)", Hue.White)
             .WriteText(displayBuffer, (0, font.Height * 9), "See 'aboot.txt'", Hue.White)
         End With
     End Sub

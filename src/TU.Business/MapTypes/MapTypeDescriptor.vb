@@ -8,7 +8,7 @@ Friend Class MapTypeDescriptor
     ReadOnly Property CustomInitializer As Action(Of IMap)
     Sub New(
            size As (Integer, Integer),
-           Optional defaultTerrainType As String = TerrainTypes.Grass,
+           Optional defaultTerrainType As String = Nothing,
            Optional spawnCharacters As IReadOnlyDictionary(Of String, Integer) = Nothing,
            Optional spawnItems As IReadOnlyDictionary(Of String, Integer) = Nothing,
            Optional customInitializer As Action(Of IMap) = Nothing)
