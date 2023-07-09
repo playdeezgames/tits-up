@@ -1,3 +1,5 @@
+Imports System.ComponentModel.Design.Serialization
+Imports System.Threading
 Imports AOS.Presentation
 Imports AOS.UI
 Imports Microsoft.Xna.Framework
@@ -22,7 +24,8 @@ Module Program
     Private ReadOnly fontFileNames As IReadOnlyDictionary(Of String, String) =
         New Dictionary(Of String, String) From
         {
-            {UIFont, "Content/CyFont8x8.json"}
+            {UIFont, "Content/CyFont8x8.json"},
+            {TitsUpFont, "Content/TitsUp.json"}
         }
     Private ReadOnly sfxFileNames As IReadOnlyDictionary(Of String, String) =
         New Dictionary(Of String, String) From

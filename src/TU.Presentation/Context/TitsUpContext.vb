@@ -27,16 +27,16 @@ Public Class TitsUpContext
         Dim x = ViewWidth \ 2 - font.TextWidth(text) \ 2
         Dim y = ViewHeight \ 2 - font.Height \ 2
         With font
-            .WriteText(displayBuffer, (x + 1, y - 1), text, Hue.Brown)
-            .WriteText(displayBuffer, (x + 1, y), text, Hue.Brown)
-            .WriteText(displayBuffer, (x + 1, y + 1), text, Hue.Brown)
-            .WriteText(displayBuffer, (x - 1, y - 1), text, Hue.Brown)
-            .WriteText(displayBuffer, (x - 1, y), text, Hue.Brown)
-            .WriteText(displayBuffer, (x - 1, y + 1), text, Hue.Brown)
-            .WriteText(displayBuffer, (x, y - 1), text, Hue.Brown)
-            .WriteText(displayBuffer, (x, y + 1), text, Hue.Brown)
+            .WriteText(displayBuffer, (x + 1, y - 1), text, Hue.Pink)
+            .WriteText(displayBuffer, (x + 1, y), text, Hue.Pink)
+            .WriteText(displayBuffer, (x + 1, y + 1), text, Hue.Pink)
+            .WriteText(displayBuffer, (x - 1, y - 1), text, Hue.Pink)
+            .WriteText(displayBuffer, (x - 1, y), text, Hue.Pink)
+            .WriteText(displayBuffer, (x - 1, y + 1), text, Hue.Pink)
+            .WriteText(displayBuffer, (x, y - 1), text, Hue.Pink)
+            .WriteText(displayBuffer, (x, y + 1), text, Hue.Pink)
 
-            .WriteText(displayBuffer, (x, y), text, Hue.Yellow)
+            .WriteText(displayBuffer, (x, y), text, Hue.Red)
         End With
         ShowStatusBar(displayBuffer, font, "Space/(A) - Continue", Hue.Black, Hue.LightGray)
     End Sub
@@ -44,10 +44,10 @@ Public Class TitsUpContext
     Public Overrides Sub ShowAboutContent(displayBuffer As IPixelSink, font As Font)
         With font
             .WriteText(displayBuffer, (0, 0), "About Tits Up!!", Hue.Orange)
-            '.WriteText(displayBuffer, (0, font.Height * 2), "Art:", Hue.White)
-            '.WriteText(displayBuffer, (0, font.Height * 3), "https://opengameart.org/content/micro-roguelike", Hue.White)
+            .WriteText(displayBuffer, (0, font.Height * 2), "Art:", Hue.White)
+            .WriteText(displayBuffer, (0, font.Height * 3), "https://vurmux.itch.io/urizen-onebit-tileset", Hue.White)
             .WriteText(displayBuffer, (0, font.Height * 5), "A Production of TheGrumpyGameDev", Hue.White)
-            .WriteText(displayBuffer, (0, font.Height * 7), "For Weeksause (July 2023)", Hue.White)
+            .WriteText(displayBuffer, (0, font.Height * 7), "For Weeksauce (July 2023)", Hue.White)
             .WriteText(displayBuffer, (0, font.Height * 9), "See 'aboot.txt'", Hue.White)
         End With
     End Sub
