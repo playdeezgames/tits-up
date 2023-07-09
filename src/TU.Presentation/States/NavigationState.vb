@@ -23,7 +23,16 @@
     Public Overrides Sub Render(displayBuffer As IPixelSink)
         displayBuffer.Fill((0, 0), Context.ViewSize, DarkGray)
         DrawMap(displayBuffer)
+        DrawStats(displayBuffer)
         Context.ShowStatusBar(displayBuffer, Context.Font(UIFont), Context.ControlsText("Action Menu", "Game Menu"), Black, LightGray)
+    End Sub
+
+    Private Sub DrawStats(displayBuffer As IPixelSink)
+        Dim health = Game.GetAvatarStatistic(StatisticTypes.Health)
+        Dim maximumHealth = Game.GetAvatarStatistic(StatisticTypes.MaximumHealth)
+        With Context.Font(UIFont)
+            .WriteText(displayBuffer, (0, 0), $"H: {health}/{maximumHealth}", Pink)
+        End With
     End Sub
 
     Private Sub DrawMap(displayBuffer As IPixelSink)

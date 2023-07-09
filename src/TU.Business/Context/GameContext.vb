@@ -55,4 +55,8 @@ Public Class GameContext
     Public Function HasCharacter(location As (Integer, Integer)) As Boolean Implements IGameContext.HasCharacter
         Return World.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).HasCharacter
     End Function
+
+    Public Function GetAvatarStatistic(statisticType As String) As Integer Implements IGameContext.GetAvatarStatistic
+        Return World.Avatar.Statistic(statisticType)
+    End Function
 End Class

@@ -14,7 +14,8 @@ Friend Module MapTypes
                     TerrainTypes.Empty,
                     spawnCharacters:=New Dictionary(Of String, Integer) From
                                       {
-                                        {CharacterTypes.Tizzy, 1}
+                                        {CharacterTypes.Tizzy, 1},
+                                        {CharacterTypes.Goblin, 6}
                                       },
                     customInitializer:=AddressOf InitializeInitialMap)
             }

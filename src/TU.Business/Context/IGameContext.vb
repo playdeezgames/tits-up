@@ -11,6 +11,7 @@ Public Interface IGameContext
     Function GetCharacterGlyphAndColor(location As (Integer, Integer)) As (Char, Integer)
     Function HasCharacter(location As (Integer, Integer)) As Boolean
     Sub Move(delta As (Integer, Integer))
+    Function GetAvatarStatistic(statisticType As String) As Integer
     ReadOnly Property MapColumnCount As Integer
     ReadOnly Property MapRowCount As Integer
 End Interface

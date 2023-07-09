@@ -11,13 +11,13 @@ Public Class TitsUpContext
         Get
             Return {
                 (ViewWidth * 3, ViewHeight * 3),
-                (ViewWidth * 5, ViewHeight * 5),
-                (ViewWidth * 8, ViewHeight * 8),
-                (ViewWidth * 10, ViewHeight * 10),
-                (ViewWidth * 13, ViewHeight * 13),
+                (ViewWidth * 6, ViewHeight * 6),
+                (ViewWidth * 9, ViewHeight * 9),
+                (ViewWidth * 12, ViewHeight * 12),
                 (ViewWidth * 15, ViewHeight * 15),
                 (ViewWidth * 18, ViewHeight * 18),
-                (ViewWidth * 20, ViewHeight * 20)
+                (ViewWidth * 21, ViewHeight * 21),
+                (ViewWidth * 24, ViewHeight * 24)
                 }
         End Get
     End Property

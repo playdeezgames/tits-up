@@ -3,6 +3,7 @@ Imports TU.Persistence
 
 Friend Module CharacterTypes
     Friend Const Tizzy = "Tizzy"
+    Friend Const Goblin = "Goblin"
     Private ReadOnly descriptors As IReadOnlyDictionary(Of String, CharacterTypeDescriptor) =
         New Dictionary(Of String, CharacterTypeDescriptor) From
         {
@@ -11,7 +12,24 @@ Friend Module CharacterTypes
                 New CharacterTypeDescriptor(
                     "Tizzy",
                     ChrW(1),
-                    Hue.Brown)
+                    Hue.Brown,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Health, 3},
+                        {StatisticTypes.MaximumHealth, 3}
+                    })
+            },
+            {
+                Goblin,
+                New CharacterTypeDescriptor(
+                    "Goblin",
+                    ChrW(5),
+                    Hue.Green,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Health, 1},
+                        {StatisticTypes.MaximumHealth, 1}
+                    })
             }
         }
     <Extension>
