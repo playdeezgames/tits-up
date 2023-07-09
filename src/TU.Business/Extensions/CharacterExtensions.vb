@@ -18,6 +18,10 @@ Friend Module CharacterExtensions
         Return Nothing
     End Function
     <Extension>
+    Friend Function Name(character As ICharacter) As String
+        Return character.CharacterType.ToCharacterTypeDescriptor.Name
+    End Function
+    <Extension>
     Friend Sub Move(character As ICharacter, delta As (Integer, Integer))
         Dim nextColumn = character.Cell.Column + delta.Item1
         Dim nextRow = character.Cell.Row + delta.Item2

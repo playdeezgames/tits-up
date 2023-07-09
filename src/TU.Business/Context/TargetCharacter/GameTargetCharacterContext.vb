@@ -14,6 +14,11 @@
             Return world.Avatar.TargetCharacter IsNot Nothing
         End Get
     End Property
+    Public ReadOnly Property Name As String Implements IGameTargetCharacterContext.Name
+        Get
+            Return world.Avatar.TargetCharacter.Name
+        End Get
+    End Property
     Public Sub DoVerb(verbType As String) Implements IGameTargetCharacterContext.DoVerb
         world.Avatar.TargetCharacter.DoVerb(verbType, world.Avatar)
     End Sub

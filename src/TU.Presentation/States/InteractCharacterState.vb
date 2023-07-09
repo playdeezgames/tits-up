@@ -11,6 +11,7 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
+        HeaderText = Game.TargetCharacter.Name
         Return Game.TargetCharacter.Verbs.ToList
     End Function
 End Class
