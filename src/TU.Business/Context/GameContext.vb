@@ -21,6 +21,12 @@ Public Class GameContext
         End Get
     End Property
 
+    Public ReadOnly Property Map As IGameMapContext Implements IGameContext.Map
+        Get
+            Return New GameMapContext(World)
+        End Get
+    End Property
+
     Private Property World As IWorld
     Public Sub Embark() Implements IGameContext.Embark
         World = New World(New Data.WorldData)
@@ -44,11 +50,11 @@ Public Class GameContext
         World.Avatar.TargetCharacter.DoVerb(verbType, World.Avatar)
     End Sub
 
-    Public Function GetOffsetX(viewWidth As Integer, cellWidth As Integer) As Integer Implements IGameContext.GetOffsetX
+    Public Function GetMapOffsetX(viewWidth As Integer, cellWidth As Integer) As Integer Implements IGameContext.GetMapOffsetX
         Return viewWidth \ 2 - cellWidth \ 2 - World.Avatar.Cell.Column * cellWidth
     End Function
 
-    Public Function GetOffsetY(viewHeight As Integer, cellHeight As Integer) As Integer Implements IGameContext.GetOffsetY
+    Public Function GetMapOffsetY(viewHeight As Integer, cellHeight As Integer) As Integer Implements IGameContext.GetMapOffsetY
         Return viewHeight \ 2 - cellHeight \ 2 - World.Avatar.Cell.Row * cellHeight
     End Function
 

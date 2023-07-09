@@ -36,8 +36,8 @@
     End Sub
 
     Private Sub DrawMap(displayBuffer As IPixelSink)
-        Dim offsetX As Integer = Game.GetOffsetX(ViewWidth, CellWidth)
-        Dim offsetY As Integer = Game.GetOffsetY(ViewHeight, CellHeight)
+        Dim offsetX As Integer = Game.GetMapOffsetX(ViewWidth, CellWidth)
+        Dim offsetY As Integer = Game.GetMapOffsetY(ViewHeight, CellHeight)
         Dim plotX = offsetX
         For Each column In Enumerable.Range(0, Game.MapColumnCount)
             If plotX >= ViewWidth Then
