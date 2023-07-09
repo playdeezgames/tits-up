@@ -14,7 +14,7 @@
     End Sub
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        Game.Move(Delta)
+        Game.Avatar.Move(Delta)
         SetState(Neutral)
     End Sub
 End Class

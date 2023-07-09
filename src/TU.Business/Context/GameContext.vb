@@ -32,11 +32,4 @@ Public Class GameContext
     Public Sub Save(filename As String) Implements IGameContext.Save
         World.Save(filename)
     End Sub
-
-    Public Sub Move(delta As (Integer, Integer)) Implements IGameContext.Move
-        World.Avatar.Move(delta)
-    End Sub
-    Public Function GetAvatarStatistic(statisticType As String) As Integer Implements IGameContext.GetAvatarStatistic
-        Return World.Avatar.Statistic(statisticType)
-    End Function
 End Class
