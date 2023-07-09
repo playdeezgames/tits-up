@@ -40,6 +40,10 @@ Public Class GameContext
         World.Avatar.Move(delta)
     End Sub
 
+    Public Sub DoTargetCharacterVerb(verbType As String) Implements IGameContext.DoTargetCharacterVerb
+        World.Avatar.TargetCharacter.DoVerb(verbType, World.Avatar)
+    End Sub
+
     Public Function GetOffsetX(viewWidth As Integer, cellWidth As Integer) As Integer Implements IGameContext.GetOffsetX
         Return viewWidth \ 2 - cellWidth \ 2 - World.Avatar.Cell.Column * cellWidth
     End Function

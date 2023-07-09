@@ -6,7 +6,8 @@
     End Sub
 
     Protected Overrides Sub OnActivateMenuItem(value As (String, String))
-        Throw New NotImplementedException()
+        Game.DoTargetCharacterVerb(value.Item2)
+        SetState(Neutral)
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))

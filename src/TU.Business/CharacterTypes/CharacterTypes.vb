@@ -29,9 +29,17 @@ Friend Module CharacterTypes
                     {
                         {StatisticTypes.Health, 1},
                         {StatisticTypes.MaximumHealth, 1}
+                    }, verbs:=New Dictionary(Of String, Action(Of ICharacter, ICharacter)) From
+                    {
+                        {VerbTypes.Disengage, AddressOf DefaultDisengage}
                     })
             }
         }
+
+    Private Sub DefaultDisengage(source As ICharacter, target As ICharacter)
+        source.SetTargetCharacter(Nothing)
+    End Sub
+
     <Extension>
     Friend Function ToCharacterTypeDescriptor(characterType As String) As CharacterTypeDescriptor
         Return descriptors(characterType)

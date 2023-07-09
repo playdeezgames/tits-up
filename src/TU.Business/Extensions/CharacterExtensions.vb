@@ -3,7 +3,7 @@ Imports TU.Persistence
 
 Friend Module CharacterExtensions
     <Extension>
-    Private Sub SetTargetCharacter(character As ICharacter, target As ICharacter)
+    Friend Sub SetTargetCharacter(character As ICharacter, target As ICharacter)
         If target Is Nothing Then
             character.RemoveStatistic(StatisticTypes.TargetCharacterId)
             Return
@@ -41,4 +41,8 @@ Friend Module CharacterExtensions
     Friend Function Verbs(character As ICharacter) As IEnumerable(Of String)
         Return character.CharacterType.ToCharacterTypeDescriptor.AvailableVerbs
     End Function
+    <Extension>
+    Friend Sub DoVerb(target As ICharacter, verbType As String, source As ICharacter)
+        target.CharacterType.ToCharacterTypeDescriptor.Verbs(verbType).Invoke(source, target)
+    End Sub
 End Module
