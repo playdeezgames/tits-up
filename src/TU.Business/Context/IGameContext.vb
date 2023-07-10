@@ -6,4 +6,6 @@
     ReadOnly Property Map As IGameMapContext
     ReadOnly Property Avatar As IGameAvatarContext
     ReadOnly Property TargetCharacter As IGameTargetCharacterContext
+    ReadOnly Property Messages As IGameMessagesContext
+    ReadOnly Property IsTitsUp As Boolean
 End Interface

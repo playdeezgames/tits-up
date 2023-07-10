@@ -13,6 +13,8 @@ Public Class GameController
         SetState(GameState.MoveWest, New MoveState(Me, AddressOf SetCurrentState, context, (-1, 0)))
         SetState(GameState.MoveEast, New MoveState(Me, AddressOf SetCurrentState, context, (1, 0)))
         SetState(GameState.InteractCharacter, New InteractCharacterState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.Message, New MessageState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.TitsUp, New TitsUpState(Me, AddressOf SetCurrentState, context))
         SetCurrentState(BoilerplateState.Splash, True)
     End Sub
 End Class

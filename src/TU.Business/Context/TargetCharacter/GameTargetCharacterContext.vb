@@ -19,6 +19,13 @@
             Return world.Avatar.TargetCharacter.Name
         End Get
     End Property
+
+    Public ReadOnly Property Statistic(statisticType As String) As Integer Implements IGameTargetCharacterContext.Statistic
+        Get
+            Return world.Avatar.TargetCharacter.Statistic(statisticType)
+        End Get
+    End Property
+
     Public Sub DoVerb(verbType As String) Implements IGameTargetCharacterContext.DoVerb
         world.Avatar.TargetCharacter.DoVerb(verbType, world.Avatar)
     End Sub

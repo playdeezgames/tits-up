@@ -11,7 +11,7 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        HeaderText = Game.TargetCharacter.Name
+        HeaderText = $"{Game.TargetCharacter.Name}({Game.TargetCharacter.Statistic(StatisticTypes.Health)}/{Game.TargetCharacter.Statistic(StatisticTypes.MaximumHealth)})"
         Return Game.TargetCharacter.Verbs.ToList
     End Function
 End Class

@@ -18,6 +18,18 @@ Public Class GameContext
         End Get
     End Property
 
+    Public ReadOnly Property Messages As IGameMessagesContext Implements IGameContext.Messages
+        Get
+            Return New GameMessagesContext(World)
+        End Get
+    End Property
+
+    Public ReadOnly Property IsTitsUp As Boolean Implements IGameContext.IsTitsUp
+        Get
+            Return World.Avatar.IsTitsUp
+        End Get
+    End Property
+
     Private Property World As IWorld
     Public Sub Embark() Implements IGameContext.Embark
         World = New World(New Data.WorldData)
