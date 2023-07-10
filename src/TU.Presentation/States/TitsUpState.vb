@@ -19,6 +19,9 @@
         With font
             .WriteText(displayBuffer, (Context.ViewSize.Item1 \ 2 - .TextWidth(text) \ 2, Context.ViewSize.Item2 \ 2 - font.Height \ 2), text, Red)
         End With
+        With Context.Font(TitsUpFont)
+            .WriteText(displayBuffer, (Context.ViewSize.Item1 \ 2 - CellWidth \ 2, Context.ViewSize.Item2 \ 4 - CellHeight \ 2), ChrW(2), Brown)
+        End With
         If DateTimeOffset.Now > showUntil Then
             Context.ShowStatusBar(displayBuffer, font, "Space/(A) - Main Menu", Black, LightGray)
         End If
