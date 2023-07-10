@@ -23,6 +23,20 @@ Friend Module CharacterExtensions
         Return character.CharacterType.ToCharacterTypeDescriptor.Name
     End Function
     <Extension>
+    Private Sub DoOpportunityAttacks(character As ICharacter)
+        If Not character.IsAvatar Then
+            Return
+        End If
+        Dim index = 1
+        For Each adjacentEnemy In character.AdjacentEnemies
+            If character.IsTitsUp Then
+                Exit For
+            End If
+            adjacentEnemy.Attack(character, (LightGray, $"Opportunity Attack {index} of {character.AdjacentEnemies.Count}"))
+            index += 1
+        Next
+    End Sub
+    <Extension>
     Friend Sub Move(character As ICharacter, delta As (Integer, Integer))
         Dim nextColumn = character.Cell.Column + delta.Item1
         Dim nextRow = character.Cell.Row + delta.Item2
@@ -37,7 +51,7 @@ Friend Module CharacterExtensions
         If nextCell.HasCharacter Then
             Return
         End If
-        'TODO: opportunity attacks
+        character.DoOpportunityAttacks()
         nextCell.Character = character
         character.Cell.Character = Nothing
         character.Cell = nextCell
