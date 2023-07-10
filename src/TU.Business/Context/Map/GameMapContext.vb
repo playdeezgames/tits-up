@@ -31,4 +31,12 @@
         Dim descriptor = world.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).Character.CharacterType.ToCharacterTypeDescriptor
         Return (descriptor.Glyph, descriptor.Hue)
     End Function
+
+    Public Function HasEnemy(location As (Integer, Integer)) As Boolean Implements IGameMapContext.HasEnemy
+        Return If(world.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).Character?.IsEnemy, False)
+    End Function
+
+    Public Function IsAdjacent(location As (Integer, Integer)) As Boolean Implements IGameMapContext.IsAdjacent
+        Return (Math.Abs(location.Item1 - world.Avatar.Cell.Column) + Math.Abs(location.Item2 - world.Avatar.Cell.Row)) = 1
+    End Function
 End Class

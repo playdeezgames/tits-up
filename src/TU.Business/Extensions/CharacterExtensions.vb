@@ -49,4 +49,8 @@ Friend Module CharacterExtensions
     Friend Sub DoVerb(target As ICharacter, verbType As String, source As ICharacter)
         target.CharacterType.ToCharacterTypeDescriptor.Verbs(verbType).Invoke(source, target)
     End Sub
+    <Extension>
+    Friend Function IsEnemy(character As ICharacter) As Boolean
+        Return character.CharacterType.ToCharacterTypeDescriptor.HasFlag(FlagTypes.Enemy)
+    End Function
 End Module

@@ -1,4 +1,6 @@
-﻿Friend Class NavigationState
+﻿Imports System.Xml.Schema
+
+Friend Class NavigationState
     Inherits BaseGameState(Of IGameContext)
 
     Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IGameContext))
@@ -60,7 +62,7 @@
     End Sub
 
     Private Sub DrawCell(displayBuffer As IPixelSink, plot As (Integer, Integer), location As (Integer, Integer))
-        displayBuffer.Fill(plot, (CellWidth, CellHeight), Black)
+        displayBuffer.Fill(plot, (CellWidth, CellHeight), If(Game.Map.IsAdjacent(location) AndAlso Game.Map.HasEnemy(location), Red, Black))
         Dim font = Context.Font(TitsUpFont)
         Dim glyphAndColor = Game.Map.TerrainGlyphAndColor(location)
         font.WriteText(displayBuffer, plot, glyphAndColor.Item1, glyphAndColor.Item2)
