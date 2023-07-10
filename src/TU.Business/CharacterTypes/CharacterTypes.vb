@@ -17,7 +17,8 @@ Friend Module CharacterTypes
                     {
                         {StatisticTypes.Health, 3},
                         {StatisticTypes.MaximumHealth, 3}
-                    })
+                    },
+                    flags:=New List(Of String) From {FlagTypes.Avatar})
             },
             {
                 Goblin,
@@ -32,7 +33,8 @@ Friend Module CharacterTypes
                     }, verbs:=New Dictionary(Of String, Action(Of ICharacter, ICharacter)) From
                     {
                         {VerbTypes.Disengage, AddressOf DefaultDisengage}
-                    })
+                    },
+                    flags:=New List(Of String) From {FlagTypes.Enemy})
             }
         }
 

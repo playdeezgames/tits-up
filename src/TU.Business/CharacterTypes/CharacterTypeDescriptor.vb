@@ -5,6 +5,12 @@ Friend Class CharacterTypeDescriptor
     Friend ReadOnly Property Statistics As IReadOnlyDictionary(Of String, Integer)
     Friend ReadOnly Property Initializer As Action(Of ICharacter)
     Friend ReadOnly Property Verbs As IReadOnlyDictionary(Of String, Action(Of ICharacter, ICharacter))
+    Private ReadOnly Flags As HashSet(Of String)
+    Friend ReadOnly Property HasFlag(flagType As String) As Boolean
+        Get
+            Return Flags.Contains(flagType)
+        End Get
+    End Property
     Friend ReadOnly Property AvailableVerbs As IEnumerable(Of String)
         Get
             Return Verbs.Keys
@@ -16,10 +22,12 @@ Friend Class CharacterTypeDescriptor
                   hue As Integer,
                   Optional statistics As IReadOnlyDictionary(Of String, Integer) = Nothing,
                   Optional initializer As Action(Of ICharacter) = Nothing,
-                  Optional verbs As IReadOnlyDictionary(Of String, Action(Of ICharacter, ICharacter)) = Nothing)
+                  Optional verbs As IReadOnlyDictionary(Of String, Action(Of ICharacter, ICharacter)) = Nothing,
+                  Optional flags As IEnumerable(Of String) = Nothing)
         MyBase.New(name, glyph, hue)
         Me.Statistics = If(statistics, New Dictionary(Of String, Integer))
         Me.Verbs = If(verbs, New Dictionary(Of String, Action(Of ICharacter, ICharacter)))
+        Me.Flags = New HashSet(Of String)(If(flags, New List(Of String)))
         Me.Initializer = If(initializer, Sub(x)
                                          End Sub)
     End Sub
