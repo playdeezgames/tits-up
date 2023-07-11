@@ -11,6 +11,8 @@ Friend Class NavigationState
         Select Case cmd
             Case Command.B
                 SetState(GameMenu)
+            Case Command.A
+                SetState(ActionMenu)
             Case Command.Up
                 SetState(GameState.MoveNorth)
             Case Command.Down

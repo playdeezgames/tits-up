@@ -15,6 +15,8 @@ Public Class GameController
         SetState(GameState.InteractCharacter, New InteractCharacterState(Me, AddressOf SetCurrentState, context))
         SetState(GameState.Message, New MessageState(Me, AddressOf SetCurrentState, context))
         SetState(GameState.TitsUp, New TitsUpState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.ActionMenu, New ActionMenuState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.Statistics, New StatisticsState(Me, AddressOf SetCurrentState, context))
         SetCurrentState(BoilerplateState.Splash, True)
     End Sub
 End Class

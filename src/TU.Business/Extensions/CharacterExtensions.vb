@@ -100,11 +100,11 @@ Friend Module CharacterExtensions
         Return character.Statistic(StatisticTypes.AttackDice)
     End Function
     <Extension>
-    Private Function MaximumDefend(character As ICharacter) As Integer
+    Friend Function MaximumDefend(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.MaximumDefend)
     End Function
     <Extension>
-    Private Function MaximumAttack(character As ICharacter) As Integer
+    Friend Function MaximumAttack(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.MaximumAttack)
     End Function
     <Extension>
