@@ -19,7 +19,7 @@
         y = RenderLine(displayBuffer, font, y, $"Health: {Game.Avatar.Health}/{Game.Avatar.MaximumHealth}", Pink)
         y = RenderLine(displayBuffer, font, y, $"Attack: {Game.Avatar.MaximumAttack}", Red)
         y = RenderLine(displayBuffer, font, y, $"Defend: {Game.Avatar.MaximumDefend}", Green)
-        y = RenderLine(displayBuffer, font, y, $"Encumbrance: {Game.Avatar.Encumbrance}/{Game.Avatar.MaximumEncumbrance}", Blue)
+        y = RenderLine(displayBuffer, font, y, $"Encumbrance: {Game.Avatar.Encumbrance.CurrentEncumbrance}/{Game.Avatar.Encumbrance.MaximumEncumbrance}", Blue)
         Context.ShowHeader(displayBuffer, font, "Statistics", Orange, Black)
         Context.ShowStatusBar(displayBuffer, font, "Space/(A)/Esc/(B) - Go Back", Black, LightGray)
     End Sub
