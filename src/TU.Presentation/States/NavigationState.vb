@@ -29,7 +29,7 @@ Friend Class NavigationState
         DrawMap(displayBuffer)
         DrawStats(displayBuffer)
         Dim font = Context.Font(UIFont)
-        If Game.Avatar.Encumbrance.IsOverencumbered Then
+        If Game.Avatar.Encumbrance.IsOver Then
             Context.ShowHeader(displayBuffer, font, "**ENCUMBERED**", Black, Red)
         End If
         Context.ShowStatusBar(displayBuffer, Font, Context.ControlsText("Action Menu", "Game Menu"), Black, LightGray)

@@ -1,5 +1,5 @@
 ﻿Public Interface IGameAvatarEncumbranceContext
-    ReadOnly Property CurrentEncumbrance As Integer
-    ReadOnly Property MaximumEncumbrance As Integer
-    ReadOnly Property IsOverencumbered As Boolean
+    ReadOnly Property Current As Integer
+    ReadOnly Property Maximum As Integer
+    ReadOnly Property IsOver As Boolean
 End Interface

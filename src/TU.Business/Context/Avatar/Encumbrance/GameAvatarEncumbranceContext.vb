@@ -9,19 +9,19 @@ Friend Class GameAvatarEncumbranceContext
         Me.avatar = avatar
     End Sub
 
-    Public ReadOnly Property CurrentEncumbrance As Integer Implements IGameAvatarEncumbranceContext.CurrentEncumbrance
+    Public ReadOnly Property Current As Integer Implements IGameAvatarEncumbranceContext.Current
         Get
             Return avatar.Encumbrance
         End Get
     End Property
 
-    Public ReadOnly Property MaximumEncumbrance As Integer Implements IGameAvatarEncumbranceContext.MaximumEncumbrance
+    Public ReadOnly Property Maximum As Integer Implements IGameAvatarEncumbranceContext.Maximum
         Get
             Return avatar.MaximumEncumbrance
         End Get
     End Property
 
-    Public ReadOnly Property IsOverencumbered As Boolean Implements IGameAvatarEncumbranceContext.IsOverencumbered
+    Public ReadOnly Property IsOver As Boolean Implements IGameAvatarEncumbranceContext.IsOver
         Get
             Return avatar.IsOverencumbered
         End Get
