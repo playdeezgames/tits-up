@@ -1,5 +1,6 @@
 ﻿Friend Module GameState
-    Public Const ActionMenu = "ActionMenu"
+    Friend Const ActionMenu = "ActionMenu"
+    Friend Const Ground = "Ground"
     Friend Const InteractCharacter = "InteractCharacter"
     Friend Const Message = "Message"
     Friend Const MoveNorth = "MoveNorth"

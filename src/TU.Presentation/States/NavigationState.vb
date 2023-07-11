@@ -32,8 +32,8 @@ Friend Class NavigationState
     End Sub
 
     Private Sub DrawStats(displayBuffer As IPixelSink)
-        Dim health = Game.Avatar.Statistic(StatisticTypes.Health)
-        Dim maximumHealth = Game.Avatar.Statistic(StatisticTypes.MaximumHealth)
+        Dim health = Game.Avatar.Health
+        Dim maximumHealth = Game.Avatar.MaximumHealth
         With Context.Font(UIFont)
             .WriteText(displayBuffer, (0, 0), $"H: {health}/{maximumHealth}", Pink)
         End With

@@ -88,7 +88,7 @@ Friend Module CharacterExtensions
         Return character.Health = 0
     End Function
     <Extension>
-    Private Function Health(character As ICharacter) As Integer
+    Friend Function Health(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.Health)
     End Function
     <Extension>
@@ -112,7 +112,7 @@ Friend Module CharacterExtensions
         character.Statistic(StatisticTypes.Health) = Math.Clamp(health, 0, character.MaximumHealth)
     End Sub
     <Extension>
-    Private Function MaximumHealth(character As ICharacter) As Integer
+    Friend Function MaximumHealth(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.MaximumHealth)
     End Function
     <Extension>
