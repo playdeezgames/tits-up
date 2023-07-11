@@ -26,6 +26,18 @@
         End Get
     End Property
 
+    Public ReadOnly Property Health As Integer Implements IGameTargetCharacterContext.Health
+        Get
+            Return world.Avatar.TargetCharacter.Health
+        End Get
+    End Property
+
+    Public ReadOnly Property MaximumHealth As Integer Implements IGameTargetCharacterContext.MaximumHealth
+        Get
+            Return world.Avatar.TargetCharacter.MaximumHealth
+        End Get
+    End Property
+
     Public Sub DoVerb(verbType As String) Implements IGameTargetCharacterContext.DoVerb
         world.Avatar.TargetCharacter.DoVerb(verbType, world.Avatar)
     End Sub
