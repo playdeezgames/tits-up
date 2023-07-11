@@ -20,7 +20,8 @@ Friend Module CharacterTypes
                         {StatisticTypes.AttackDice, 1},
                         {StatisticTypes.MaximumAttack, 1},
                         {StatisticTypes.DefendDice, 4},
-                        {StatisticTypes.MaximumDefend, 2}
+                        {StatisticTypes.MaximumDefend, 2},
+                        {StatisticTypes.MaximumEncumbrance, 10}
                     },
                     flags:=New List(Of String) From {FlagTypes.Avatar})
             },

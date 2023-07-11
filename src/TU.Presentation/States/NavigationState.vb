@@ -28,7 +28,11 @@ Friend Class NavigationState
         displayBuffer.Fill((0, 0), Context.ViewSize, DarkGray)
         DrawMap(displayBuffer)
         DrawStats(displayBuffer)
-        Context.ShowStatusBar(displayBuffer, Context.Font(UIFont), Context.ControlsText("Action Menu", "Game Menu"), Black, LightGray)
+        Dim font = Context.Font(UIFont)
+        If Game.Avatar.IsOverencumbered Then
+            Context.ShowHeader(displayBuffer, font, "**ENCUMBERED**", Black, Red)
+        End If
+        Context.ShowStatusBar(displayBuffer, Font, Context.ControlsText("Action Menu", "Game Menu"), Black, LightGray)
     End Sub
 
     Private Sub DrawStats(displayBuffer As IPixelSink)

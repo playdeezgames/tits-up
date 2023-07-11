@@ -10,4 +10,7 @@
     Property SelectedItemName As String
     ReadOnly Property GroundItemsByName As IEnumerable(Of (String, Integer))
     Property SelectedItemId As Integer?
+    ReadOnly Property Encumbrance As Integer
+    ReadOnly Property MaximumEncumbrance As Integer
+    ReadOnly Property IsOverencumbered As Boolean
 End Interface

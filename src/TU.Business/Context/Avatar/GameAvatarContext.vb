@@ -71,6 +71,24 @@
         End Set
     End Property
 
+    Public ReadOnly Property Encumbrance As Integer Implements IGameAvatarContext.Encumbrance
+        Get
+            Return world.Avatar.Encumbrance
+        End Get
+    End Property
+
+    Public ReadOnly Property MaximumEncumbrance As Integer Implements IGameAvatarContext.MaximumEncumbrance
+        Get
+            Return world.Avatar.MaximumEncumbrance
+        End Get
+    End Property
+
+    Public ReadOnly Property IsOverencumbered As Boolean Implements IGameAvatarContext.IsOverencumbered
+        Get
+            Return world.Avatar.IsOverencumbered
+        End Get
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IGameAvatarContext.Move
         world.Avatar.Move(delta)
     End Sub

@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.Diagnostics.CodeAnalysis
+Imports System.Runtime.CompilerServices
 Imports SPLORR.Game
 Imports TU.Persistence
 
@@ -152,4 +153,16 @@ Friend Module CharacterExtensions
         character.Cell.RemoveItem(item)
         character.AddItem(item)
     End Sub
+    <Extension>
+    Friend Function IsOverencumbered(character As ICharacter) As Boolean
+        Return character.Encumbrance > character.MaximumEncumbrance
+    End Function
+    <Extension>
+    Friend Function Encumbrance(character As ICharacter) As Integer
+        Return character.Items.Sum(Function(x) x.Encumbrance)
+    End Function
+    <Extension>
+    Friend Function MaximumEncumbrance(character As ICharacter) As Integer
+        Return character.Statistic(StatisticTypes.MaximumEncumbrance)
+    End Function
 End Module

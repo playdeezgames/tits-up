@@ -13,14 +13,22 @@ Friend Module ItemTypes
                 New ItemTypeDescriptor(
                     "Key",
                     ChrW(8),
-                    Orange)
+                    Orange,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Encumbrance, 0}
+                    })
             },
             {
                 GoblinCorpse,
                 New ItemTypeDescriptor(
                     "Goblin Corpse",
                     ChrW(6),
-                    Green)
+                    Green,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Encumbrance, 25}
+                    })
             }
         }
     <Extension>
