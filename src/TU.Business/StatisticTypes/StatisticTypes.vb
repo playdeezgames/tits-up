@@ -5,5 +5,6 @@
     Public Const MaximumAttack = "MaximumAttack"
     Public Const MaximumDefend = "MaximumDefend"
     Public Const MaximumHealth = "MaximumHealth"
+    Public Const SelectedItemId = "SelectedItemId"
     Public Const TargetCharacterId = "TargetCharacterId"
 End Module

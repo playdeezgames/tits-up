@@ -4,6 +4,7 @@
     Public Const DefaultScreenWidth = ViewWidth * 3
     Public Const DefaultScreenHeight = ViewHeight * 3
     Public Const GroundText = "Ground..."
+    Public Const TakeText = "Take"
     Friend Const StatisticsText = "Statistics"
     Public Const TitsUpDelaySeconds = 3.0
     Public Const TitsUpFont = "TitsUpFont"

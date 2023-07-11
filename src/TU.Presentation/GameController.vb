@@ -18,6 +18,9 @@ Public Class GameController
         SetState(GameState.ActionMenu, New ActionMenuState(Me, AddressOf SetCurrentState, context))
         SetState(GameState.Statistics, New StatisticsState(Me, AddressOf SetCurrentState, context))
         SetState(GameState.Ground, New GroundState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.GroundDetail, New GroundDetailState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.GroundItem, New GroundItemState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.Take, New TakeState(Me, AddressOf SetCurrentState, context))
         SetCurrentState(BoilerplateState.Splash, True)
     End Sub
 End Class

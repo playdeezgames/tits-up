@@ -48,6 +48,12 @@ Public Class World
         End Get
     End Property
 
+    Public ReadOnly Property Item(id As Integer) As IItem Implements IWorld.Item
+        Get
+            Return New Item(WorldData, id)
+        End Get
+    End Property
+
     Public Sub Save(filename As String) Implements IWorld.Save
         File.WriteAllText(filename, JsonSerializer.Serialize(WorldData))
     End Sub

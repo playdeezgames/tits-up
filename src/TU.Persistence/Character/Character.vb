@@ -84,6 +84,22 @@
         End Get
     End Property
 
+    Public Property Metadata(identifier As String) As String Implements ICharacter.Metadata
+        Get
+            If CharacterData.Metadata.ContainsKey(identifier) Then
+                Return CharacterData.Metadata(identifier)
+            End If
+            Return Nothing
+        End Get
+        Set(value As String)
+            If value Is Nothing Then
+                CharacterData.Metadata.Remove(identifier)
+                Return
+            End If
+            CharacterData.Metadata(identifier) = value
+        End Set
+    End Property
+
     Public Sub Recycle() Implements ICharacter.Recycle
         If Not IsAvatar Then
             For Each equippedItem In EquippedItems

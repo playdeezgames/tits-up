@@ -6,4 +6,5 @@
     Public Property Statistics As New Dictionary(Of String, Integer)
     Public Property ItemIds As New HashSet(Of Integer)
     Public Property EquipSlots As New Dictionary(Of String, Integer)
+    Public Property Metadata As New Dictionary(Of String, String)
 End Class

@@ -4,6 +4,7 @@
     Property Cell As ICell
     ReadOnly Property Map As IMap
     Property Statistic(statisticType As String) As Integer
+    Property Metadata(identifier As String) As String
     ReadOnly Property World As IWorld
     Sub Recycle()
     ReadOnly Property Items As IEnumerable(Of IItem)

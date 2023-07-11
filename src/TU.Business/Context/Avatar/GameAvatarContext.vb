@@ -34,13 +34,52 @@
         End Get
     End Property
 
-    Public ReadOnly Property GroundItems As List(Of (String, String)) Implements IGameAvatarContext.GroundItems
+    Public ReadOnly Property GroundItems As IEnumerable(Of (String, String)) Implements IGameAvatarContext.GroundItems
         Get
-            Return world.Avatar.Cell.Items.GroupBy(Function(x) x.Name).Select(Function(x) ($"{x.Key}(x{x.Count})", x.Key)).ToList
+            Return world.Avatar.Cell.Items.GroupBy(Function(x) x.Name).Select(Function(x) ($"{x.Key}(x{x.Count})", x.Key))
         End Get
+    End Property
+
+    Public Property SelectedItemName As String Implements IGameAvatarContext.SelectedItemName
+        Get
+            Return world.Avatar.Metadata(Metadatas.SelectedItemName)
+        End Get
+        Set(value As String)
+            world.Avatar.Metadata(Metadatas.SelectedItemName) = value
+        End Set
+    End Property
+
+    Public ReadOnly Property GroundItemsByName As IEnumerable(Of (String, Integer)) Implements IGameAvatarContext.GroundItemsByName
+        Get
+            Return world.Avatar.Cell.Items.Where(Function(x) x.Name = SelectedItemName).Select(Function(x) (x.Name, x.Id))
+        End Get
+    End Property
+
+    Public Property SelectedItemId As Integer? Implements IGameAvatarContext.SelectedItemId
+        Get
+            If world.Avatar.HasStatistic(StatisticTypes.SelectedItemId) Then
+                Return world.Avatar.Statistic(StatisticTypes.SelectedItemId)
+            End If
+            Return Nothing
+        End Get
+        Set(value As Integer?)
+            If value.HasValue Then
+                world.Avatar.Statistic(StatisticTypes.SelectedItemId) = value.Value
+                Return
+            End If
+            world.Avatar.RemoveStatistic(StatisticTypes.SelectedItemId)
+        End Set
     End Property
 
     Public Sub Move(delta As (Integer, Integer)) Implements IGameAvatarContext.Move
         world.Avatar.Move(delta)
+    End Sub
+
+    Public Sub TakeSelectedItem() Implements IGameAvatarContext.TakeSelectedItem
+        Dim item = world.Item(SelectedItemId.Value)
+        world.Avatar.Cell.RemoveItem(item)
+        world.Avatar.AddItem(item)
+        SelectedItemName = Nothing
+        SelectedItemId = Nothing
     End Sub
 End Class
