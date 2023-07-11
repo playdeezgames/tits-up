@@ -86,8 +86,13 @@
 
     Public Sub Recycle() Implements ICharacter.Recycle
         If Not IsAvatar Then
-            'TODO: unequip items
-            'TODO: drop items
+            For Each equippedItem In EquippedItems
+                UnequipItem(equippedItem)
+            Next
+            For Each item In Items
+                RemoveItem(item)
+                Cell.AddItem(item)
+            Next
             Cell.Character = Nothing
             CharacterData.Recycled = True
         End If

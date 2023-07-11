@@ -39,4 +39,13 @@
     Public Function IsAdjacent(location As (Integer, Integer)) As Boolean Implements IGameMapContext.IsAdjacent
         Return (Math.Abs(location.Item1 - world.Avatar.Cell.Column) + Math.Abs(location.Item2 - world.Avatar.Cell.Row)) = 1
     End Function
+
+    Public Function HasItem(location As (Integer, Integer)) As Boolean Implements IGameMapContext.HasItem
+        Return world.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).HasItems
+    End Function
+
+    Public Function ItemGlyphAndColor(location As (Integer, Integer)) As (Char, Integer) Implements IGameMapContext.ItemGlyphAndColor
+        Dim descriptor = world.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).Items.First.ItemType.ToItemTypeDescriptor
+        Return (descriptor.Glyph, descriptor.Hue)
+    End Function
 End Class

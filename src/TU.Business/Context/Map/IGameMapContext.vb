@@ -6,6 +6,8 @@
     Function HasEnemy(location As (Integer, Integer)) As Boolean
     Function IsAdjacent(location As (Integer, Integer)) As Boolean
     Function CharacterGlyphAndColor(location As (Integer, Integer)) As (Char, Integer)
+    Function HasItem(location As (Integer, Integer)) As Boolean
+    Function ItemGlyphAndColor(location As (Integer, Integer)) As (Char, Integer)
     ReadOnly Property Columns As Integer
     ReadOnly Property Rows As Integer
 End Interface

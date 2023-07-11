@@ -38,14 +38,20 @@ Friend Module CharacterTypes
                         {StatisticTypes.MaximumAttack, 2},
                         {StatisticTypes.DefendDice, 1},
                         {StatisticTypes.MaximumDefend, 1}
-                    }, verbs:=New Dictionary(Of String, Action(Of ICharacter, ICharacter)) From
+                    },
+                    verbs:=New Dictionary(Of String, Action(Of ICharacter, ICharacter)) From
                     {
                         {VerbTypes.Fight, AddressOf DefaultAttack},
                         {VerbTypes.Disengage, AddressOf DefaultDisengage}
                     },
-                    flags:=New List(Of String) From {FlagTypes.Enemy})
+                    flags:=New List(Of String) From {FlagTypes.Enemy},
+                    initializer:=AddressOf InitializeGoblin)
             }
         }
+
+    Private Sub InitializeGoblin(character As ICharacter)
+        character.AddItem(ItemInitializer.CreateItem(character.World, ItemTypes.GoblinCorpse))
+    End Sub
 
     Private Sub DefaultAttack(source As ICharacter, target As ICharacter)
         source.Attack(target)

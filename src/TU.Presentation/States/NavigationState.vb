@@ -66,6 +66,10 @@ Friend Class NavigationState
         Dim font = Context.Font(TitsUpFont)
         Dim glyphAndColor = Game.Map.TerrainGlyphAndColor(location)
         font.WriteText(displayBuffer, plot, glyphAndColor.Item1, glyphAndColor.Item2)
+        If Game.Map.HasItem(location) Then
+            glyphAndColor = Game.Map.ItemGlyphAndColor(location)
+            font.WriteText(displayBuffer, plot, glyphAndColor.Item1, glyphAndColor.Item2)
+        End If
         If Game.Map.HasCharacter(location) Then
             glyphAndColor = Game.Map.CharacterGlyphAndColor(location)
             font.WriteText(displayBuffer, plot, glyphAndColor.Item1, glyphAndColor.Item2)

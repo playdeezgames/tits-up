@@ -14,6 +14,7 @@ Friend Module MapInitializer
         InitializeCells(map)
         PopulateCharacters(map, descriptor.SpawnCharacters)
         PopulateItems(map, descriptor.SpawnItems)
+        descriptor.PostProcessor.Invoke(map)
     End Sub
 
     Private Sub InitializeCells(map As IMap)

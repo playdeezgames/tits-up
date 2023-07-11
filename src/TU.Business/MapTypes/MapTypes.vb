@@ -1,5 +1,6 @@
 ﻿Imports System.Data.Common
 Imports System.Runtime.CompilerServices
+Imports SPLORR.Game
 Imports TU.Persistence
 
 Friend Module MapTypes
@@ -17,9 +18,14 @@ Friend Module MapTypes
                                         {CharacterTypes.Tizzy, 1},
                                         {CharacterTypes.Goblin, 6}
                                       },
-                    customInitializer:=AddressOf InitializeInitialMap)
+                    customInitializer:=AddressOf InitializeInitialMap,
+                    postProcessor:=AddressOf PostProcessInitialMap)
             }
         }
+
+    Private Sub PostProcessInitialMap(map As IMap)
+        RNG.FromEnumerable(map.Cells.Where(Function(x) x.Character IsNot Nothing AndAlso x.Character.CharacterType = CharacterTypes.Goblin).Select(Function(x) x.Character)).AddItem(ItemInitializer.CreateItem(map.World, ItemTypes.Key))
+    End Sub
 
     Private Sub InitializeInitialMap(map As IMap)
         For Each column In Enumerable.Range(0, map.Columns)
@@ -30,6 +36,7 @@ Friend Module MapTypes
             map.GetCell(0, row).TerrainType = TerrainTypes.Wall
             map.GetCell(map.Columns - 1, row).TerrainType = TerrainTypes.Wall
         Next
+        map.GetCell(map.Columns - 1, map.Rows \ 2).TerrainType = TerrainTypes.LockedDoor
     End Sub
 
     <Extension>
