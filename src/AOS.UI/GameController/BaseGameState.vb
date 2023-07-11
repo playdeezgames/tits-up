@@ -3,7 +3,7 @@
     Protected ReadOnly Property Parent As IGameController
     Private ReadOnly SetCurrentState As Action(Of String, Boolean)
     Protected ReadOnly Context As IUIContext(Of TModel)
-    Protected ReadOnly Property Game As TModel
+    Protected ReadOnly Property Model As TModel
         Get
             Return Context.Model
         End Get

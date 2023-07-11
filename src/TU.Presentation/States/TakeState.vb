@@ -15,7 +15,7 @@
 
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        Game.Avatar.TakeSelectedItem()
+        Model.Avatar.TakeSelectedItem()
         SetState(Ground)
     End Sub
 End Class

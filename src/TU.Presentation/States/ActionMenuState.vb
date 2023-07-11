@@ -13,7 +13,7 @@
     End Sub
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
         Dim result As New List(Of (String, String))
-        If Game.Avatar.HasGroundItems Then
+        If Model.Avatar.HasGroundItems Then
             result.Add((GroundText, GroundText))
         End If
         result.Add((StatisticsText, StatisticsText))

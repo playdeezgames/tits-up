@@ -14,7 +14,7 @@
     End Sub
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        Game.Embark()
+        Model.Embark()
         SetState(Neutral)
     End Sub
 End Class

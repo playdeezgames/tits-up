@@ -6,12 +6,12 @@
     End Sub
 
     Protected Overrides Sub OnActivateMenuItem(value As (String, String))
-        Game.TargetCharacter.DoVerb(value.Item2)
+        Model.TargetCharacter.DoVerb(value.Item2)
         SetState(Neutral)
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        HeaderText = $"{Game.TargetCharacter.Name}({Game.TargetCharacter.Health}/{Game.TargetCharacter.MaximumHealth})"
-        Return Game.TargetCharacter.Verbs.ToList
+        HeaderText = $"{Model.TargetCharacter.Name}({Model.TargetCharacter.Health}/{Model.TargetCharacter.MaximumHealth})"
+        Return Model.TargetCharacter.Verbs.ToList
     End Function
 End Class

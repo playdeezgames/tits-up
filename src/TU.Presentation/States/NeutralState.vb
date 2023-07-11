@@ -14,15 +14,15 @@
     End Sub
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        If Game.Messages.HasAny Then
+        If Model.Messages.HasAny Then
             SetState(GameState.Message)
             Return
         End If
-        If Game.IsTitsUp Then
+        If Model.IsTitsUp Then
             SetState(GameState.TitsUp)
             Return
         End If
-        If Game.TargetCharacter.Exists Then
+        If Model.TargetCharacter.Exists Then
             SetState(GameState.InteractCharacter)
             Return
         End If

@@ -7,14 +7,14 @@
 
     Public Overrides Sub HandleCommand(cmd As String)
         If cmd = Command.A Then
-            Game.Messages.Dismiss()
+            Model.Messages.Dismiss()
             SetState(Neutral)
         End If
     End Sub
 
     Public Overrides Sub Render(displayBuffer As IPixelSink)
         displayBuffer.Fill((0, 0), Context.ViewSize, Black)
-        Dim message As IMessage = Game.Messages.Current
+        Dim message As IMessage = Model.Messages.Current
         Dim font = Context.Font(UIFont)
         Dim y = Context.ViewSize.Item2 \ 2 - font.Height * message.LineCount \ 2
         For Each line In message.Lines
@@ -26,6 +26,6 @@
     End Sub
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        PlaySfx(Game.Messages.Current.Sfx)
+        PlaySfx(Model.Messages.Current.Sfx)
     End Sub
 End Class

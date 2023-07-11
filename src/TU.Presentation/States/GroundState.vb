@@ -6,17 +6,17 @@
     End Sub
 
     Protected Overrides Sub OnActivateMenuItem(value As (String, String))
-        Game.Avatar.SelectedItemName = value.Item2
+        Model.Avatar.SelectedItemName = value.Item2
         SetState(GameState.GroundDetail)
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        Return Game.Avatar.GroundItems.ToList
+        Return Model.Avatar.GroundItems.ToList
     End Function
 
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        If Not Game.Avatar.HasGroundItems Then
+        If Not Model.Avatar.HasGroundItems Then
             SetState(Neutral)
         End If
     End Sub

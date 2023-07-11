@@ -16,10 +16,10 @@
         displayBuffer.Fill((0, 0), Context.ViewSize, Black)
         Dim font = Context.Font(UIFont)
         Dim y = Context.ViewSize.Item2 \ 2 - font.Height * 4 \ 2
-        y = RenderLine(displayBuffer, font, y, $"Health: {Game.Avatar.Health}/{Game.Avatar.MaximumHealth}", Pink)
-        y = RenderLine(displayBuffer, font, y, $"Attack: {Game.Avatar.MaximumAttack}", Red)
-        y = RenderLine(displayBuffer, font, y, $"Defend: {Game.Avatar.MaximumDefend}", Green)
-        y = RenderLine(displayBuffer, font, y, $"Encumbrance: {Game.Avatar.Encumbrance.Current}/{Game.Avatar.Encumbrance.Maximum}", Blue)
+        y = RenderLine(displayBuffer, font, y, $"Health: {Model.Avatar.Health}/{Model.Avatar.MaximumHealth}", Pink)
+        y = RenderLine(displayBuffer, font, y, $"Attack: {Model.Avatar.MaximumAttack}", Red)
+        y = RenderLine(displayBuffer, font, y, $"Defend: {Model.Avatar.MaximumDefend}", Green)
+        y = RenderLine(displayBuffer, font, y, $"Encumbrance: {Model.Avatar.Encumbrance.Current}/{Model.Avatar.Encumbrance.Maximum}", Blue)
         Context.ShowHeader(displayBuffer, font, "Statistics", Orange, Black)
         Context.ShowStatusBar(displayBuffer, font, "Space/(A)/Esc/(B) - Go Back", Black, LightGray)
     End Sub

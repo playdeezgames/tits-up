@@ -9,17 +9,17 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, Integer))
-        HeaderText = Game.Avatar.SelectedItemName
-        Return Game.Avatar.GroundItemsByName.ToList
+        HeaderText = Model.Avatar.SelectedItemName
+        Return Model.Avatar.GroundItemsByName.ToList
     End Function
 
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        Select Case Game.Avatar.GroundItemsByName.Count
+        Select Case Model.Avatar.GroundItemsByName.Count
             Case 0
                 SetState(Ground)
             Case 1
-                Game.Avatar.SelectedItemId = Game.Avatar.GroundItemsByName.Single.Item2
+                Model.Avatar.SelectedItemId = Model.Avatar.GroundItemsByName.Single.Item2
                 SetState(GameState.GroundItem)
         End Select
     End Sub

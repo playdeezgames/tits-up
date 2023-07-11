@@ -13,7 +13,7 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        HeaderText = Game.Avatar.SelectedItemName
+        HeaderText = Model.Avatar.SelectedItemName
         Return New List(Of (String, String)) From
             {
                 (TakeText, TakeText)

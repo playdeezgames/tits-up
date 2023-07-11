@@ -7,7 +7,7 @@
 
     Public Overrides Sub HandleCommand(cmd As String)
         If cmd = Command.A AndAlso DateTimeOffset.Now > showUntil Then
-            Game.Abandon()
+            Model.Abandon()
             SetState(MainMenu)
         End If
     End Sub
