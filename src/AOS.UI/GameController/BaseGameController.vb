@@ -1,8 +1,8 @@
-﻿Public Class BaseGameController(Of TGameContext)
+﻿Public Class BaseGameController(Of TModel)
     Implements IGameController
     Protected ReadOnly Settings As ISettings
     Private _sizeHook As Action(Of (Integer, Integer), Boolean)
-    Private ReadOnly _states As New Dictionary(Of String, BaseGameState(Of TGameContext))
+    Private ReadOnly _states As New Dictionary(Of String, BaseGameState(Of TModel))
     Private ReadOnly _stateStack As New Stack(Of String)
     Protected Sub SetCurrentState(state As String, push As Boolean)
         If Not push Then
@@ -30,7 +30,7 @@
         End If
     End Sub
 
-    Protected Sub SetState(state As String, handler As BaseGameState(Of TGameContext))
+    Protected Sub SetState(state As String, handler As BaseGameState(Of TModel))
         _states(state) = handler
     End Sub
     Public Property Size As (Integer, Integer) Implements IGameController.Size
@@ -69,21 +69,21 @@
         End Set
     End Property
     Public Property StartStateEnabled As Boolean = True Implements IGameController.StartStateEnabled
-    Sub New(settings As ISettings, context As IUIContext(Of TGameContext))
+    Sub New(settings As ISettings, context As IUIContext(Of TModel))
         Me.Settings = settings
         Me.Settings.Save()
         Me.Volume = settings.Volume
-        SetState(BoilerplateState.Splash, New SplashState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.MainMenu, New MainMenuState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.ConfirmQuit, New ConfirmQuitState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.About, New AboutState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.Options, New OptionsState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.WindowSize, New WindowSizeState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.Volume, New VolumeState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.Load, New LoadState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.Save, New SaveState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.Abandon, New ConfirmAbandonState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
-        SetState(BoilerplateState.GameMenu, New GameMenuState(Of TGameContext)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.Splash, New SplashState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.MainMenu, New MainMenuState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.ConfirmQuit, New ConfirmQuitState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.About, New AboutState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.Options, New OptionsState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.WindowSize, New WindowSizeState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.Volume, New VolumeState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.Load, New LoadState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.Save, New SaveState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.Abandon, New ConfirmAbandonState(Of TModel)(Me, AddressOf SetCurrentState, context))
+        SetState(BoilerplateState.GameMenu, New GameMenuState(Of TModel)(Me, AddressOf SetCurrentState, context))
     End Sub
     Private OnSfx As Action(Of String)
     Public Sub HandleCommand(command As String) Implements IGameController.HandleCommand

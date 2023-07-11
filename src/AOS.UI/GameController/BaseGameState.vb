@@ -1,15 +1,15 @@
-﻿Public MustInherit Class BaseGameState(Of TGameContext)
+﻿Public MustInherit Class BaseGameState(Of TModel)
     Implements IGameController
     Protected ReadOnly Property Parent As IGameController
     Private ReadOnly SetCurrentState As Action(Of String, Boolean)
-    Protected ReadOnly Context As IUIContext(Of TGameContext)
-    Protected ReadOnly Property Game As TGameContext
+    Protected ReadOnly Context As IUIContext(Of TModel)
+    Protected ReadOnly Property Game As TModel
         Get
-            Return Context.Game
+            Return Context.Model
         End Get
     End Property
     Protected Const Zero = 0
-    Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of TGameContext))
+    Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of TModel))
         Me.Parent = parent
         Me.SetCurrentState = setState
         Me.Context = context

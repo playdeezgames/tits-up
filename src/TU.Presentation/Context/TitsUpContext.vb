@@ -53,15 +53,15 @@ Public Class TitsUpContext
     End Sub
 
     Public Overrides Sub AbandonGame()
-        Game.Abandon()
+        Model.Abandon()
     End Sub
 
     Public Overrides Sub LoadGame(slot As Integer)
-        Game.Load(SlotFilename(slot))
+        Model.Load(SlotFilename(slot))
     End Sub
 
     Public Overrides Sub SaveGame(slot As Integer)
-        Game.Save(SlotFilename(slot))
+        Model.Save(SlotFilename(slot))
     End Sub
 
     Public Overrides Function DoesSlotExist(slot As Integer) As Boolean

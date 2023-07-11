@@ -1,6 +1,6 @@
-﻿Friend Class AboutState(Of TGameContext)
-    Inherits BaseGameState(Of TGameContext)
-    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of TGameContext))
+﻿Friend Class AboutState(Of TModel)
+    Inherits BaseGameState(Of TModel)
+    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of TModel))
         MyBase.New(parent, setState, context)
     End Sub
     Public Overrides Sub HandleCommand(cmd As String)

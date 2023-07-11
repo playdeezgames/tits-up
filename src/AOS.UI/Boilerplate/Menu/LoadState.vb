@@ -1,6 +1,6 @@
-﻿Friend Class LoadState(Of TGameContext)
-    Inherits BasePickerState(Of TGameContext, Integer)
-    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of TGameContext))
+﻿Friend Class LoadState(Of TModel)
+    Inherits BasePickerState(Of TModel, Integer)
+    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of TModel))
         MyBase.New(parent, setState, context, "Load Game", context.ControlsText("Select", "Cancel"), BoilerplateState.MainMenu)
     End Sub
 

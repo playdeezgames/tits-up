@@ -1,5 +1,5 @@
-﻿Public Interface IUIContext(Of TGameContext)
-    ReadOnly Property Game As TGameContext
+﻿Public Interface IUIContext(Of TModel)
+    ReadOnly Property Model As TModel
     Function Font(fontName As String) As Font
     Sub ShowStatusBar(displayBuffer As IPixelSink, font As Font, text As String, foreground As Integer, background As Integer)
     Sub ShowHeader(displayBuffer As IPixelSink, font As Font, text As String, foreground As Integer, background As Integer)
