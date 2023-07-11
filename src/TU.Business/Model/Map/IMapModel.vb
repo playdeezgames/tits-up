@@ -1,4 +1,4 @@
-﻿Public Interface IGameMapContext
+﻿Public Interface IMapModel
     Function GetOffsetX(viewWidth As Integer, cellWidth As Integer) As Integer
     Function GetOffsetY(viewHeight As Integer, cellHeight As Integer) As Integer
     Function TerrainGlyphAndColor(location As (Integer, Integer)) As (Char, Integer)

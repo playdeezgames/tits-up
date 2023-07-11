@@ -1,8 +1,8 @@
 ﻿Friend Class MoveState
-    Inherits BaseGameState(Of IGameContext)
+    Inherits BaseGameState(Of IWorldModel)
     Private ReadOnly Property Delta As (Integer, Integer)
 
-    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IGameContext), delta As (Integer, Integer))
+    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IWorldModel), delta As (Integer, Integer))
         MyBase.New(parent, setState, context)
         Me.Delta = delta
     End Sub

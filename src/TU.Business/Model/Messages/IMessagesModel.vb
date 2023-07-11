@@ -1,6 +1,6 @@
 ﻿Imports TU.Persistence
 
-Public Interface IGameMessagesContext
+Public Interface IMessagesModel
     ReadOnly Property HasAny As Boolean
     ReadOnly Property Current As IMessage
     Sub Dismiss()

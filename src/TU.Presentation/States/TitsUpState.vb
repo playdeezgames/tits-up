@@ -1,7 +1,7 @@
 ﻿Friend Class TitsUpState
-    Inherits BaseGameState(Of IGameContext)
+    Inherits BaseGameState(Of IWorldModel)
     Private showUntil As DateTimeOffset
-    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IGameContext))
+    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IWorldModel))
         MyBase.New(parent, setState, context)
     End Sub
 

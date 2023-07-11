@@ -1,4 +1,4 @@
-﻿Public Interface IGameAvatarContext
+﻿Public Interface IAvatarModel
     Sub Move(delta As (Integer, Integer))
 
     ReadOnly Property GroundItems As IEnumerable(Of (String, String))
@@ -13,5 +13,5 @@
     ReadOnly Property Health As Integer
     ReadOnly Property MaximumHealth As Integer
 
-    ReadOnly Property Encumbrance As IGameAvatarEncumbranceContext
+    ReadOnly Property Encumbrance As IAvatarEncumbranceModel
 End Interface

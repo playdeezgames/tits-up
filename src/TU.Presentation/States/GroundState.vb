@@ -1,7 +1,7 @@
 ﻿Friend Class GroundState
-    Inherits BasePickerState(Of IGameContext, String)
+    Inherits BasePickerState(Of IWorldModel, String)
 
-    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IGameContext))
+    Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IWorldModel))
         MyBase.New(parent, setState, context, "On The Ground", context.ControlsText("Select", "Cancel"), Neutral)
     End Sub
 

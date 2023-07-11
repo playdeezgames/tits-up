@@ -1,10 +1,10 @@
 ﻿Imports System.IO
 
 Public Class TitsUpContext
-    Inherits UIContext(Of IGameContext)
+    Inherits UIContext(Of IWorldModel)
 
     Public Sub New(fontFilenames As IReadOnlyDictionary(Of String, String), viewSize As (Integer, Integer))
-        MyBase.New(New GameContext, fontFilenames, viewSize)
+        MyBase.New(New WorldModel, fontFilenames, viewSize)
     End Sub
 
     Public Overrides ReadOnly Property AvailableWindowSizes As IEnumerable(Of (Integer, Integer))
