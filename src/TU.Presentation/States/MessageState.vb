@@ -24,4 +24,8 @@
         Next
         Context.ShowStatusBar(displayBuffer, font, "Space/(A) - Dismiss", Black, LightGray)
     End Sub
+    Public Overrides Sub OnStart()
+        MyBase.OnStart()
+        PlaySfx(Game.Messages.Current.Sfx)
+    End Sub
 End Class

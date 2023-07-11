@@ -136,14 +136,20 @@ Friend Module CharacterExtensions
             message.AddLine(LightGray, $"{defender.Name} takes {damage} damage")
             defender.DoDamage(damage)
             If defender.IsTitsUp Then
-                message.AddLine(LightGray, $"{attacker.Name} makes {defender.Name} go tits up")
+                message.AddLine(LightGray, $"{attacker.Name} makes {defender.Name} go tits up").SetSfx(If(defender.IsAvatar, Sfx.PlayerDeath, Sfx.EnemyDeath))
                 attacker.RemoveStatistic(StatisticTypes.TargetCharacterId)
                 defender.Recycle()
             Else
-                message.AddLine(LightGray, $"{defender.Name} has {defender.Health} health remaining")
+                message.
+                    AddLine(LightGray, $"{defender.Name} has {defender.Health} health remaining").SetSfx(If(defender.IsAvatar, Sfx.PlayerHit, Sfx.EnemyHit))
             End If
         Else
-            message.AddLine(LightGray, $"{attacker.Name} misses!")
+            message.AddLine(LightGray, $"{attacker.Name} misses!").SetSfx(Sfx.Miss)
         End If
+    End Sub
+    <Extension>
+    Friend Sub TakeItem(character As ICharacter, item As IItem)
+        character.Cell.RemoveItem(item)
+        character.AddItem(item)
     End Sub
 End Module

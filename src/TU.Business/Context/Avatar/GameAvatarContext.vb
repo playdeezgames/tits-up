@@ -77,8 +77,7 @@
 
     Public Sub TakeSelectedItem() Implements IGameAvatarContext.TakeSelectedItem
         Dim item = world.Item(SelectedItemId.Value)
-        world.Avatar.Cell.RemoveItem(item)
-        world.Avatar.AddItem(item)
+        world.Avatar.TakeItem(item)
         SelectedItemName = Nothing
         SelectedItemId = Nothing
     End Sub
