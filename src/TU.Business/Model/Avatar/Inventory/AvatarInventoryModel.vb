@@ -23,6 +23,13 @@ Public Class AvatarInventoryModel
         End Get
     End Property
 
+    Public ReadOnly Property ItemVerbs As IEnumerable(Of (String, String)) Implements IAvatarInventoryModel.ItemVerbs
+        Get
+            Dim item = avatar.World.Item(model.SelectedItemId.Value)
+            Return item.ItemType.ToItemTypeDescriptor.AllVerbTypes.Select(Function(x) (x.ToVerbTypeDescriptor.Name, x))
+        End Get
+    End Property
+
     Public Sub DropSelected() Implements IAvatarInventoryModel.DropSelected
         Dim item = avatar.World.Item(model.SelectedItemId.Value)
         avatar.DropItem(item)
