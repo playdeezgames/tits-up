@@ -3,11 +3,13 @@
 Friend Module VerbTypes
     Friend Const Disengage = "Disengage"
     Friend Const Fight = "Fight"
+    Friend Const Eat = "Eat"
     Private ReadOnly descriptors As IReadOnlyDictionary(Of String, VerbDescriptor) =
         New Dictionary(Of String, VerbDescriptor) From
         {
             {Disengage, New VerbDescriptor("Disengage")},
-            {Fight, New VerbDescriptor("Fight!")}
+            {Fight, New VerbDescriptor("Fight!")},
+            {Eat, New VerbDescriptor("Eat")}
         }
     <Extension>
     Friend Function ToVerbTypeDescriptor(verbType As String) As VerbDescriptor

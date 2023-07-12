@@ -5,6 +5,8 @@ Imports TU.Persistence
 Friend Module ItemTypes
     Friend Const Key = "Key"
     Friend Const GoblinCorpse = "GoblinCorpse"
+    Friend Const Meat = "Meat"
+    Friend Const RottenMeat = "RottenMeat"
     Private ReadOnly descriptors As IReadOnlyDictionary(Of String, ItemTypeDescriptor) =
         New Dictionary(Of String, ItemTypeDescriptor) From
         {
@@ -20,6 +22,36 @@ Friend Module ItemTypes
                     })
             },
             {
+                Meat,
+                New ItemTypeDescriptor(
+                    "Meat",
+                    ChrW(9),
+                    Red,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Encumbrance, 0}
+                    },
+                    verbTypes:=New Dictionary(Of String, Action(Of ICharacter, IItem)) From
+                    {
+                        {VerbTypes.Eat, AddressOf EatMeat}
+                    })
+            },
+            {
+                RottenMeat,
+                New ItemTypeDescriptor(
+                    "Meat",
+                    ChrW(9),
+                    Red,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Encumbrance, 0}
+                    },
+                    verbTypes:=New Dictionary(Of String, Action(Of ICharacter, IItem)) From
+                    {
+                        {VerbTypes.Eat, AddressOf EatRottenMeat}
+                    })
+            },
+            {
                 GoblinCorpse,
                 New ItemTypeDescriptor(
                     "Goblin Corpse",
@@ -31,6 +63,15 @@ Friend Module ItemTypes
                     })
             }
         }
+
+    Private Sub EatRottenMeat(character As ICharacter, item As IItem)
+        Throw New NotImplementedException()
+    End Sub
+
+    Private Sub EatMeat(character As ICharacter, item As IItem)
+        Throw New NotImplementedException()
+    End Sub
+
     <Extension>
     Friend Function ToItemTypeDescriptor(itemType As String) As ItemTypeDescriptor
         Return descriptors(itemType)

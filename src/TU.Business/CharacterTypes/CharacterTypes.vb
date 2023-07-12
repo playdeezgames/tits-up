@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports SPLORR.Game
 Imports TU.Persistence
 
 Friend Module CharacterTypes
@@ -52,6 +53,15 @@ Friend Module CharacterTypes
 
     Private Sub InitializeGoblin(character As ICharacter)
         character.AddItem(ItemInitializer.CreateItem(character.World, ItemTypes.GoblinCorpse))
+        For Each dummy In Enumerable.Range(0, RNG.RollDice("2d2+-2d1"))
+            Dim item As IItem
+            If RNG.FromGenerator(RNG.MakeBooleanGenerator(1, 1)) Then
+                item = ItemInitializer.CreateItem(character.World, ItemTypes.RottenMeat)
+            Else
+                item = ItemInitializer.CreateItem(character.World, ItemTypes.Meat)
+            End If
+            character.AddItem(item)
+        Next
     End Sub
 
     Private Sub DefaultAttack(source As ICharacter, target As ICharacter)
