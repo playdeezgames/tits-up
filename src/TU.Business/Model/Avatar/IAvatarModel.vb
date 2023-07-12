@@ -1,13 +1,18 @@
 ﻿Public Interface IAvatarModel
     Sub Move(delta As (Integer, Integer))
+    ReadOnly Property IsTitsUp As Boolean
 
+    'TODO: refactor into ground items
     ReadOnly Property GroundItems As IEnumerable(Of (String, String))
     ReadOnly Property GroundItemsByName As IEnumerable(Of (String, Integer))
+    ReadOnly Property HasGroundItems As Boolean
+
+    'TODO: refactor into selected item
     Sub TakeSelectedItem()
     Property SelectedItemId As Integer?
     Property SelectedItemName As String
-    ReadOnly Property HasGroundItems As Boolean
 
+    'TODO: refactor into combat
     ReadOnly Property MaximumAttack As Integer
     ReadOnly Property MaximumDefend As Integer
     ReadOnly Property Health As Integer

@@ -77,6 +77,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property IsTitsUp As Boolean Implements IAvatarModel.IsTitsUp
+        Get
+            Return world.Avatar.IsTitsUp
+        End Get
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
         world.Avatar.Move(delta)
     End Sub
