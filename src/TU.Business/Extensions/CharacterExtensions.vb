@@ -165,4 +165,9 @@ Friend Module CharacterExtensions
     Friend Function MaximumEncumbrance(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.MaximumEncumbrance)
     End Function
+    <Extension>
+    Friend Sub DropItem(character As ICharacter, item As IItem)
+        character.Cell.AddItem(item)
+        character.RemoveItem(item)
+    End Sub
 End Module

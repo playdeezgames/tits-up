@@ -4,6 +4,8 @@
         MyBase.New(parent, setState, context, "Inventory", context.ControlsText("Select", "Cancel"), GameState.ActionMenu)
     End Sub
     Protected Overrides Sub OnActivateMenuItem(value As (String, String))
+        Model.Avatar.SelectedItemName = value.Item2
+        SetState(GameState.InventoryDetail)
     End Sub
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
         Return Model.Avatar.Inventory.Items.ToList
