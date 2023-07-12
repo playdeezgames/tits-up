@@ -85,7 +85,7 @@ Friend Module ItemTypes
         item.Recycle()
         message.AddLine(Green, $"{character.Name} regains 1 health!")
         character.SetHealth(character.Health + 1)
-        message.AddLine(LightGray, $"{character.Name} has {character.Health} health left!")
+        message.AddLine(LightGray, $"{character.Name} has {character.Health} health!")
     End Sub
 
     <Extension>

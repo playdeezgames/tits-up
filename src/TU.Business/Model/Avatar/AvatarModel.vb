@@ -99,6 +99,10 @@
     End Property
 
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
+        If Encumbrance.IsOver Then
+            world.CreateMessage().AddLine(LightGray, $"{world.Avatar.Name} is carrying too much.")
+            Return
+        End If
         world.Avatar.Move(delta)
     End Sub
 

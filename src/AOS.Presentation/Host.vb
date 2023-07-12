@@ -46,7 +46,7 @@ Public Class Host
     Const Pitch = 0.0F
     Const Pan = 0.0F
     Private Sub OnSfx(sfx As String)
-        If _sfxSoundEffects.ContainsKey(sfx) Then
+        If sfx IsNot Nothing AndAlso _sfxSoundEffects.ContainsKey(sfx) Then
             _sfxSoundEffects(sfx).Play(_controller.Volume, Pitch, Pan)
         End If
     End Sub
