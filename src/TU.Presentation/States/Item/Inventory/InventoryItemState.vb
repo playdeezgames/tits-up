@@ -2,7 +2,7 @@
     Inherits BasePickerState(Of IWorldModel, String)
 
     Public Sub New(parent As IGameController, setState As Action(Of String, Boolean), context As IUIContext(Of IWorldModel))
-        MyBase.New(parent, setState, context, "<placeholder>", context.ControlsText("Select", "Cancel"), GameState.InventoryDetail)
+        MyBase.New(parent, setState, context, "<placeholder>", context.ControlsText("Select", "Cancel"), GameState.Inventory)
     End Sub
 
     Protected Overrides Sub OnActivateMenuItem(value As (String, String))
