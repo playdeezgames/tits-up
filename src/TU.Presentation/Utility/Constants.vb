@@ -13,5 +13,5 @@
     Friend Const InventoryText = "Inventory"
     Friend Const TakeText = "Take"
     Friend Const StatisticsText = "Statistics"
-    Friend Const TitsUpDelaySeconds = 3.0
+    Friend Const TitsUpDelaySeconds = 1.0
 End Module

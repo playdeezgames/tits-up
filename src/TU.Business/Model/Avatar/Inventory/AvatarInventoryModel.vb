@@ -36,4 +36,9 @@ Public Class AvatarInventoryModel
         model.SelectedItemName = Nothing
         model.SelectedItemId = Nothing
     End Sub
+
+    Public Sub DoItemVerb(verbType As String) Implements IAvatarInventoryModel.DoItemVerb
+        Dim item = avatar.World.Item(model.SelectedItemId.Value)
+        item.DoVerb(verbType, avatar)
+    End Sub
 End Class

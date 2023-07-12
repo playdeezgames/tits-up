@@ -9,6 +9,9 @@
         Select Case value.Item2
             Case DropText
                 SetState(GameState.Drop)
+            Case Else
+                Model.Avatar.Inventory.DoItemVerb(value.Item2)
+                SetState(Neutral)
         End Select
     End Sub
 

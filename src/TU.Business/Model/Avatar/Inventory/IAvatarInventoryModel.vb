@@ -4,4 +4,5 @@
     ReadOnly Property ItemsByName As IEnumerable(Of (String, Integer))
     ReadOnly Property ItemVerbs As IEnumerable(Of (String, String))
     Sub DropSelected()
+    Sub DoItemVerb(verbType As String)
 End Interface

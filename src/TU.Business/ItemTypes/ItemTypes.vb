@@ -65,11 +65,26 @@ Friend Module ItemTypes
         }
 
     Private Sub EatRottenMeat(character As ICharacter, item As IItem)
-        Throw New NotImplementedException()
+        Dim message = character.World.CreateMessage.AddLine(LightGray, $"{character.Name} eats {item.Name}")
+        character.RemoveItem(item)
+        item.Recycle()
+        message.AddLine(Red, $"{item.Name} is rotten!")
+        message.AddLine(LightGray, $"{character.Name} takes 1 damage!")
+        character.SetHealth(character.Health - 1)
+        If character.IsTitsUp Then
+            message.AddLine(LightGray, $"{character.Name} is tits up!").SetSfx(Sfx.PlayerDeath)
+        Else
+            message.AddLine(LightGray, $"{character.Name} has {character.Health} health left!").SetSfx(Sfx.PlayerHit)
+        End If
     End Sub
 
     Private Sub EatMeat(character As ICharacter, item As IItem)
-        Throw New NotImplementedException()
+        Dim message = character.World.CreateMessage.AddLine(LightGray, $"{character.Name} eats {item.Name}").SetSfx(Sfx.Tasty)
+        character.RemoveItem(item)
+        item.Recycle()
+        message.AddLine(Green, $"{character.Name} regains 1 health!")
+        character.SetHealth(character.Health + 1)
+        message.AddLine(LightGray, $"{character.Name} has {character.Health} health left!")
     End Sub
 
     <Extension>

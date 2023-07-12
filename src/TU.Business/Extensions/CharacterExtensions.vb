@@ -109,7 +109,7 @@ Friend Module CharacterExtensions
         Return character.Statistic(StatisticTypes.MaximumAttack)
     End Function
     <Extension>
-    Private Sub SetHealth(character As ICharacter, health As Integer)
+    Friend Sub SetHealth(character As ICharacter, health As Integer)
         character.Statistic(StatisticTypes.Health) = Math.Clamp(health, 0, character.MaximumHealth)
     End Sub
     <Extension>

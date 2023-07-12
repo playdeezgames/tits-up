@@ -55,7 +55,7 @@ Friend Module CharacterTypes
         character.AddItem(ItemInitializer.CreateItem(character.World, ItemTypes.GoblinCorpse))
         For Each dummy In Enumerable.Range(0, RNG.RollDice("2d2+-2d1"))
             Dim item As IItem
-            If RNG.FromGenerator(RNG.MakeBooleanGenerator(1, 1)) Then
+            If RNG.FromGenerator(RNG.MakeBooleanGenerator(4, 1)) Then
                 item = ItemInitializer.CreateItem(character.World, ItemTypes.RottenMeat)
             Else
                 item = ItemInitializer.CreateItem(character.World, ItemTypes.Meat)

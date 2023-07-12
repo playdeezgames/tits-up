@@ -6,6 +6,8 @@
     End Sub
 
     Protected Overrides Sub OnActivateMenuItem(value As (String, Integer))
+        Model.Avatar.SelectedItemId = value.Item2
+        SetState(GameState.GroundItem)
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, Integer))
