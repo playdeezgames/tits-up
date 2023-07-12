@@ -137,6 +137,7 @@ Friend Module CharacterExtensions
             message.AddLine(LightGray, $"{defender.Name} takes {damage} damage")
             defender.DoDamage(damage)
             If defender.IsTitsUp Then
+                defender.Metadata(Metadatas.Epitaph) = $"Killed by {attacker.Name}!"
                 message.AddLine(LightGray, $"{attacker.Name} makes {defender.Name} go tits up").SetSfx(If(defender.IsAvatar, Sfx.PlayerDeath, Sfx.EnemyDeath))
                 attacker.RemoveStatistic(StatisticTypes.TargetCharacterId)
                 defender.Recycle()

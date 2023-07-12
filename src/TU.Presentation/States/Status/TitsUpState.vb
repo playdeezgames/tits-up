@@ -18,6 +18,8 @@
         Dim text = "Yer tits up!!"
         With font
             .WriteText(displayBuffer, (Context.ViewSize.Item1 \ 2 - .TextWidth(text) \ 2, Context.ViewSize.Item2 \ 2 - font.Height \ 2), text, Red)
+            text = Model.Avatar.Epitaph
+            .WriteText(displayBuffer, (Context.ViewSize.Item1 \ 2 - .TextWidth(text) \ 2, Context.ViewSize.Item2 \ 2 + font.Height * 3 \ 2), text, Blue)
         End With
         With Context.Font(TitsUpFont)
             .WriteText(displayBuffer, (Context.ViewSize.Item1 \ 2 - CellWidth \ 2, Context.ViewSize.Item2 \ 4 - CellHeight \ 2), ChrW(2), Brown)

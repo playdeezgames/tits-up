@@ -24,7 +24,8 @@ Friend Module CharacterTypes
                         {StatisticTypes.MaximumDefend, 2},
                         {StatisticTypes.MaximumEncumbrance, 10}
                     },
-                    flags:=New List(Of String) From {FlagTypes.Avatar})
+                    flags:=New List(Of String) From {FlagTypes.Avatar},
+                    initializer:=AddressOf InitializeTizzy)
             },
             {
                 Goblin,
@@ -50,6 +51,10 @@ Friend Module CharacterTypes
                     initializer:=AddressOf InitializeGoblin)
             }
         }
+
+    Private Sub InitializeTizzy(character As ICharacter)
+        character.Metadata(Metadatas.Epitaph) = "Better luck next time!"
+    End Sub
 
     Private Sub InitializeGoblin(character As ICharacter)
         character.AddItem(ItemInitializer.CreateItem(character.World, ItemTypes.GoblinCorpse))

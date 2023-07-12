@@ -72,6 +72,7 @@ Friend Module ItemTypes
         message.AddLine(LightGray, $"{character.Name} takes 1 damage!")
         character.SetHealth(character.Health - 1)
         If character.IsTitsUp Then
+            character.Metadata(Metadatas.Epitaph) = $"Be careful which meat you put in yer mouth!"
             message.AddLine(LightGray, $"{character.Name} is tits up!").SetSfx(Sfx.PlayerDeath)
         Else
             message.AddLine(LightGray, $"{character.Name} has {character.Health} health left!").SetSfx(Sfx.PlayerHit)

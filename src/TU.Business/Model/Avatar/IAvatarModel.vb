@@ -18,6 +18,8 @@
     ReadOnly Property Health As Integer
     ReadOnly Property MaximumHealth As Integer
 
+    Property Epitaph As String
+
     ReadOnly Property Inventory As IAvatarInventoryModel
     ReadOnly Property Encumbrance As IAvatarEncumbranceModel
 End Interface

@@ -89,6 +89,15 @@
         End Get
     End Property
 
+    Public Property Epitaph As String Implements IAvatarModel.Epitaph
+        Get
+            Return world.Avatar.Metadata(Metadatas.Epitaph)
+        End Get
+        Set(value As String)
+            world.Avatar.Metadata(Metadatas.Epitaph) = value
+        End Set
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
         world.Avatar.Move(delta)
     End Sub
