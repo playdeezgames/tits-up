@@ -11,6 +11,8 @@ Public Class TitsUpContext
         Get
             Return {
                 (ViewWidth * 3, ViewHeight * 3),
+                (ViewWidth * 4, ViewHeight * 4),
+                (ViewWidth * 5, ViewHeight * 5),
                 (ViewWidth * 6, ViewHeight * 6),
                 (ViewWidth * 9, ViewHeight * 9),
                 (ViewWidth * 12, ViewHeight * 12),
@@ -23,7 +25,7 @@ Public Class TitsUpContext
     End Property
 
     Public Overrides Sub ShowSplashContent(displayBuffer As IPixelSink, font As Font)
-        Dim text = "Tits Up!!"
+        Dim text = "Tits UUp!!"
         Dim x = ViewWidth \ 2 - font.TextWidth(text) \ 2
         Dim y = ViewHeight \ 2 - font.Height \ 2
         With font

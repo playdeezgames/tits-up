@@ -7,7 +7,7 @@ Imports Microsoft.Xna.Framework.Input
 Imports TU.Business
 Imports TU.Presentation
 Module Program
-    Private Const GameTitle = "Tits Up!!"
+    Private Const GameTitle = "Tits UUp!!"
     Sub Main(args As String())
         Using host As New Host(
             GameTitle,
