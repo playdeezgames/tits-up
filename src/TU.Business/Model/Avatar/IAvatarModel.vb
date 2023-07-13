@@ -15,6 +15,8 @@
     'TODO: refactor into combat
     ReadOnly Property MaximumAttack As Integer
     ReadOnly Property MaximumDefend As Integer
+    ReadOnly Property AverageAttack As Double
+    ReadOnly Property AverageDefend As Double
     ReadOnly Property Health As Integer
     ReadOnly Property MaximumHealth As Integer
 

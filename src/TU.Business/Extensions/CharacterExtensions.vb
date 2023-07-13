@@ -93,11 +93,11 @@ Friend Module CharacterExtensions
         Return character.Statistic(StatisticTypes.Health)
     End Function
     <Extension>
-    Private Function DefendDice(character As ICharacter) As Integer
+    Friend Function DefendDice(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.DefendDice) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.DefendDice))
     End Function
     <Extension>
-    Private Function AttackDice(character As ICharacter) As Integer
+    Friend Function AttackDice(character As ICharacter) As Integer
         Return character.Statistic(StatisticTypes.AttackDice) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.AttackDice))
     End Function
     <Extension>

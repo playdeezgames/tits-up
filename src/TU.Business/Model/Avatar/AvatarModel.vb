@@ -98,6 +98,18 @@
         End Set
     End Property
 
+    Public ReadOnly Property AverageAttack As Double Implements IAvatarModel.AverageAttack
+        Get
+            Return world.Avatar.AttackDice / 6.0
+        End Get
+    End Property
+
+    Public ReadOnly Property AverageDefend As Double Implements IAvatarModel.AverageDefend
+        Get
+            Return world.Avatar.DefendDice / 6.0
+        End Get
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
         If Encumbrance.IsOver Then
             world.CreateMessage().AddLine(LightGray, $"{world.Avatar.Name} is carrying too much.")
