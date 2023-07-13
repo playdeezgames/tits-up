@@ -45,7 +45,7 @@
     End Function
 
     Public Function ItemGlyphAndColor(location As (Integer, Integer)) As (Char, Integer) Implements IMapModel.ItemGlyphAndColor
-        Dim descriptor = world.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).Items.First.ItemType.ToItemTypeDescriptor
+        Dim descriptor = world.Avatar.Cell.Map.GetCell(location.Item1, location.Item2).Items.First.Descriptor
         Return (descriptor.Glyph, descriptor.Hue)
     End Function
 End Class

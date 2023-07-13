@@ -1,6 +1,7 @@
 ﻿Friend Module GameState
     Friend Const ActionMenu = "ActionMenu"
     Friend Const Drop = "Drop"
+    Friend Const Equip = "Equip"
     Friend Const Ground = "Ground"
     Friend Const GroundDetail = "GroundDetail"
     Friend Const GroundItem = "GroundItem"

@@ -26,7 +26,13 @@ Public Class AvatarInventoryModel
     Public ReadOnly Property ItemVerbs As IEnumerable(Of (String, String)) Implements IAvatarInventoryModel.ItemVerbs
         Get
             Dim item = avatar.World.Item(model.SelectedItemId.Value)
-            Return item.ItemType.ToItemTypeDescriptor.AllVerbTypes.Select(Function(x) (x.ToVerbTypeDescriptor.Name, x))
+            Return item.Descriptor.AllVerbTypes.Select(Function(x) (x.ToVerbTypeDescriptor.Name, x))
+        End Get
+    End Property
+
+    Public ReadOnly Property CanEquip As Boolean Implements IAvatarInventoryModel.CanEquip
+        Get
+            Return avatar.World.Item(model.SelectedItemId.Value).Descriptor.CanEquip
         End Get
     End Property
 
@@ -40,5 +46,10 @@ Public Class AvatarInventoryModel
     Public Sub DoItemVerb(verbType As String) Implements IAvatarInventoryModel.DoItemVerb
         Dim item = avatar.World.Item(model.SelectedItemId.Value)
         item.DoVerb(verbType, avatar)
+    End Sub
+
+    Public Sub Equip() Implements IAvatarInventoryModel.Equip
+        Dim item = avatar.World.Item(model.SelectedItemId.Value)
+        avatar.Equip(item.Descriptor.EquipSlotType, item)
     End Sub
 End Class

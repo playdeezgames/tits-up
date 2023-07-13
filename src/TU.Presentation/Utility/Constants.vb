@@ -9,6 +9,7 @@
     Friend Const CellHeight = 12
     Friend Const CellWidth = 12
     Friend Const DropText = "Drop"
+    Friend Const EquipText = "Equip"
     Friend Const GroundText = "Ground..."
     Friend Const InventoryText = "Inventory"
     Friend Const TakeText = "Take"

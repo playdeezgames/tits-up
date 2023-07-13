@@ -9,6 +9,8 @@
         Select Case value.Item2
             Case DropText
                 SetState(GameState.Drop)
+            Case EquipText
+                SetState(GameState.Equip)
             Case Else
                 Model.Avatar.Inventory.DoItemVerb(value.Item2)
                 SetState(Neutral)
@@ -21,6 +23,9 @@
             {
                 (DropText, DropText)
             }
+        If Model.Avatar.Inventory.CanEquip Then
+            result.Add((EquipText, EquipText))
+        End If
         result.AddRange(Model.Avatar.Inventory.ItemVerbs)
         Return result
     End Function

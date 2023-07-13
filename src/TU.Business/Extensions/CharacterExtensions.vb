@@ -164,7 +164,7 @@ Friend Module CharacterExtensions
     End Function
     <Extension>
     Friend Function MaximumEncumbrance(character As ICharacter) As Integer
-        Return character.Statistic(StatisticTypes.MaximumEncumbrance)
+        Return character.Statistic(StatisticTypes.MaximumEncumbrance) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.MaximumEncumbrance))
     End Function
     <Extension>
     Friend Sub DropItem(character As ICharacter, item As IItem)

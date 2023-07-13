@@ -3,11 +3,15 @@ Imports TU.Persistence
 
 Friend Module ItemExtensions
     <Extension>
-    Friend Function Name(item As IItem) As String
-        Return item.ItemType.ToItemTypeDescriptor.Name
+    Friend Function Descriptor(item As IItem) As ItemTypeDescriptor
+        Return item.ItemType.ToItemTypeDescriptor
     End Function
     <Extension>
-    Private Function TryGetStatistic(item As IItem, statisticType As String, Optional defaultValue As Integer = 0) As Integer
+    Friend Function Name(item As IItem) As String
+        Return item.Descriptor.Name
+    End Function
+    <Extension>
+    Friend Function TryGetStatistic(item As IItem, statisticType As String, Optional defaultValue As Integer = 0) As Integer
         Return If(item.HasStatistic(statisticType), item.Statistic(statisticType), defaultValue)
     End Function
     <Extension>
@@ -16,6 +20,6 @@ Friend Module ItemExtensions
     End Function
     <Extension>
     Friend Sub DoVerb(item As IItem, verbType As String, character As ICharacter)
-        item.ItemType.ToItemTypeDescriptor.VerbTypes(verbType).Invoke(character, item)
+        item.Descriptor.VerbTypes(verbType).Invoke(character, item)
     End Sub
 End Module
