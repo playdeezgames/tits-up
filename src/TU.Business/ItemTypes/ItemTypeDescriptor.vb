@@ -6,6 +6,8 @@ Friend Class ItemTypeDescriptor
     Friend ReadOnly Property VerbTypes As IReadOnlyDictionary(Of String, Action(Of ICharacter, IItem))
     Friend ReadOnly Property Statistics As IReadOnlyDictionary(Of String, Integer)
     Friend ReadOnly Property EquipSlotType As String
+    Friend ReadOnly Property IsWeapon As Boolean
+    Friend ReadOnly Property IsArmor As Boolean
     Friend ReadOnly Property CanEquip As Boolean
         Get
             Return EquipSlotType IsNot Nothing
@@ -17,11 +19,15 @@ Friend Class ItemTypeDescriptor
                   hue As Integer,
                   Optional verbTypes As IReadOnlyDictionary(Of String, Action(Of ICharacter, IItem)) = Nothing,
                   Optional statistics As IReadOnlyDictionary(Of String, Integer) = Nothing,
-                  Optional equipSlotType As String = Nothing)
+                  Optional equipSlotType As String = Nothing,
+                  Optional isWeapon As Boolean = False,
+                  Optional isArmor As Boolean = False)
         MyBase.New(name, glyph, hue)
         Me.VerbTypes = If(verbTypes, New Dictionary(Of String, Action(Of ICharacter, IItem)))
         Me.EquipSlotType = equipSlotType
         Me.Statistics = If(statistics, New Dictionary(Of String, Integer))
+        Me.IsWeapon = isWeapon
+        Me.IsArmor = isArmor
     End Sub
     Friend Function HasVerb(verbType As String) As Boolean
         Return VerbTypes.ContainsKey(verbType)

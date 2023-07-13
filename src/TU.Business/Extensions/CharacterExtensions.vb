@@ -122,6 +122,46 @@ Friend Module CharacterExtensions
         Return neighbors.Select(Function(x) x.Character).Where(Function(x) x IsNot Nothing AndAlso x.IsEnemy)
     End Function
     <Extension>
+    Private Function Weapons(character As ICharacter) As IEnumerable(Of IItem)
+        Return character.EquippedItems.Where(Function(x) x.IsWeapon)
+    End Function
+    <Extension>
+    Private Function Armors(character As ICharacter) As IEnumerable(Of IItem)
+        Return character.EquippedItems.Where(Function(x) x.IsArmor)
+    End Function
+    <Extension>
+    Friend Sub DoWeaponWear(character As ICharacter, wear As Integer, message As IMessage)
+        Dim weapons = character.Weapons
+        While weapons.Any AndAlso wear > 0
+            Dim weapon = RNG.FromEnumerable(weapons)
+            weapon.SetDurability(weapon.Durability - 1)
+            If weapon.IsBroken Then
+                message.AddLine(Red, $"{character.Name}'s {weapon.Name} broke!")
+                character.UnequipItem(weapon)
+                character.RemoveItem(weapon)
+                weapon.Recycle()
+                weapons = character.Weapons
+            End If
+            wear -= 1
+        End While
+    End Sub
+    <Extension>
+    Friend Sub DoArmorWear(character As ICharacter, wear As Integer, message As IMessage)
+        Dim armors = character.Armors
+        While armors.Any AndAlso wear > 0
+            Dim armor = RNG.FromEnumerable(armors)
+            armor.SetDurability(armor.Durability - 1)
+            If armor.IsBroken Then
+                message.AddLine(Red, $"{character.Name}'s {armor.Name} broke!")
+                character.UnequipItem(armor)
+                character.RemoveItem(armor)
+                armor.Recycle()
+                armors = character.Armors
+            End If
+            wear -= 1
+        End While
+    End Sub
+    <Extension>
     Friend Sub Attack(attacker As ICharacter, defender As ICharacter, Optional header As (Integer, String)? = Nothing)
         Dim message = attacker.World.CreateMessage()
         If header IsNot Nothing Then
@@ -130,20 +170,26 @@ Friend Module CharacterExtensions
         message.AddLine(LightGray, $"{attacker.Name} attacks {defender.Name}!")
         Dim attackRoll = attacker.RollAttack()
         message.AddLine(LightGray, $"{attacker.Name} rolls an attack of {attackRoll}")
-        Dim defendRoll = defender.RollDefend()
-        message.AddLine(LightGray, $"{defender.Name} rolls a defend of {defendRoll}")
-        Dim damage = Math.Max(0, attackRoll - defendRoll)
-        If damage > 0 Then
-            message.AddLine(LightGray, $"{defender.Name} takes {damage} damage")
-            defender.DoDamage(damage)
-            If defender.IsTitsUp Then
-                defender.Metadata(Metadatas.Epitaph) = $"Killed by {attacker.Name}!"
-                message.AddLine(LightGray, $"{attacker.Name} makes {defender.Name} go tits up").SetSfx(If(defender.IsAvatar, Sfx.PlayerDeath, Sfx.EnemyDeath))
-                attacker.RemoveStatistic(StatisticTypes.TargetCharacterId)
-                defender.Recycle()
-            Else
-                message.
+        If attackRoll > 0 Then
+            attacker.DoWeaponWear(attackRoll, message)
+            Dim defendRoll = defender.RollDefend()
+            message.AddLine(LightGray, $"{defender.Name} rolls a defend of {defendRoll}")
+            Dim damage = Math.Max(0, attackRoll - defendRoll)
+            defender.DoArmorWear(damage, message)
+            If damage > 0 Then
+                message.AddLine(LightGray, $"{defender.Name} takes {damage} damage")
+                defender.DoDamage(damage)
+                If defender.IsTitsUp Then
+                    defender.Metadata(Metadatas.Epitaph) = $"Killed by {attacker.Name}!"
+                    message.AddLine(LightGray, $"{attacker.Name} makes {defender.Name} go tits up").SetSfx(If(defender.IsAvatar, Sfx.PlayerDeath, Sfx.EnemyDeath))
+                    attacker.RemoveStatistic(StatisticTypes.TargetCharacterId)
+                    defender.Recycle()
+                Else
+                    message.
                     AddLine(LightGray, $"{defender.Name} has {defender.Health} health remaining").SetSfx(If(defender.IsAvatar, Sfx.PlayerHit, Sfx.EnemyHit))
+                End If
+            Else
+                message.AddLine(LightGray, $"{attacker.Name} misses!").SetSfx(Sfx.Miss)
             End If
         Else
             message.AddLine(LightGray, $"{attacker.Name} misses!").SetSfx(Sfx.Miss)

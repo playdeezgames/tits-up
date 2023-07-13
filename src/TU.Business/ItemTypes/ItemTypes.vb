@@ -39,7 +39,8 @@ Friend Module ItemTypes
                         {StatisticTypes.MaximumDurability, 10},
                         {StatisticTypes.AttackDice, 2},
                         {StatisticTypes.MaximumAttack, 0}
-                    })
+                    },
+                    isWeapon:=True)
             },
             {
                 BikiniTop,
@@ -50,8 +51,10 @@ Friend Module ItemTypes
                     equipSlotType:=EquipSlotTypes.Chest,
                     statistics:=New Dictionary(Of String, Integer) From
                     {
-                        {StatisticTypes.MaximumEncumbrance, 10}
-                    })
+                        {StatisticTypes.MaximumEncumbrance, 10},
+                        {StatisticTypes.MaximumDurability, 25}
+                    },
+                    isArmor:=True)
             },
             {
                 Thong,
@@ -62,8 +65,10 @@ Friend Module ItemTypes
                     equipSlotType:=EquipSlotTypes.Pelvis,
                     statistics:=New Dictionary(Of String, Integer) From
                     {
-                        {StatisticTypes.MaximumEncumbrance, 5}
-                    })
+                        {StatisticTypes.MaximumEncumbrance, 5},
+                        {StatisticTypes.MaximumDurability, 50}
+                    },
+                    isArmor:=True)
             },
             {
                 WoodenShield,
@@ -79,7 +84,8 @@ Friend Module ItemTypes
                         {StatisticTypes.MaximumDurability, 10},
                         {StatisticTypes.DefendDice, 2},
                         {StatisticTypes.MaximumDefend, 1}
-                    })
+                    },
+                    isArmor:=True)
             },
             {
                 Meat,
