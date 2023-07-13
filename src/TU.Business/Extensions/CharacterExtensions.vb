@@ -94,19 +94,19 @@ Friend Module CharacterExtensions
     End Function
     <Extension>
     Private Function DefendDice(character As ICharacter) As Integer
-        Return character.Statistic(StatisticTypes.DefendDice)
+        Return character.Statistic(StatisticTypes.DefendDice) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.DefendDice))
     End Function
     <Extension>
     Private Function AttackDice(character As ICharacter) As Integer
-        Return character.Statistic(StatisticTypes.AttackDice)
+        Return character.Statistic(StatisticTypes.AttackDice) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.AttackDice))
     End Function
     <Extension>
     Friend Function MaximumDefend(character As ICharacter) As Integer
-        Return character.Statistic(StatisticTypes.MaximumDefend)
+        Return character.Statistic(StatisticTypes.MaximumDefend) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.MaximumDefend))
     End Function
     <Extension>
     Friend Function MaximumAttack(character As ICharacter) As Integer
-        Return character.Statistic(StatisticTypes.MaximumAttack)
+        Return character.Statistic(StatisticTypes.MaximumAttack) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.MaximumAttack))
     End Function
     <Extension>
     Friend Sub SetHealth(character As ICharacter, health As Integer)
@@ -160,7 +160,7 @@ Friend Module CharacterExtensions
     End Function
     <Extension>
     Friend Function Encumbrance(character As ICharacter) As Integer
-        Return character.Items.Sum(Function(x) x.Encumbrance)
+        Return character.Items.Sum(Function(x) x.Encumbrance) + character.EquippedItems.Sum(Function(x) x.Encumbrance)
     End Function
     <Extension>
     Friend Function MaximumEncumbrance(character As ICharacter) As Integer
