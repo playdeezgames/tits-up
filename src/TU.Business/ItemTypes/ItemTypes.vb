@@ -7,6 +7,10 @@ Friend Module ItemTypes
     Friend Const GoblinCorpse = "GoblinCorpse"
     Friend Const Meat = "Meat"
     Friend Const RottenMeat = "RottenMeat"
+    Friend Const Club = "Club"
+    Friend Const WoodenShield = "WoodenShield"
+    Friend Const BikiniTop = "BikiniTop"
+    Friend Const Thong = "Thong"
     Private ReadOnly descriptors As IReadOnlyDictionary(Of String, ItemTypeDescriptor) =
         New Dictionary(Of String, ItemTypeDescriptor) From
         {
@@ -19,6 +23,62 @@ Friend Module ItemTypes
                     statistics:=New Dictionary(Of String, Integer) From
                     {
                         {StatisticTypes.Encumbrance, 0}
+                    })
+            },
+            {
+                Club,
+                New ItemTypeDescriptor(
+                    "Club",
+                    ChrW(10),
+                    Brown,
+                    equipSlotType:=EquipSlotTypes.Weapon,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Encumbrance, 5},
+                        {StatisticTypes.Durability, 10},
+                        {StatisticTypes.MaximumDurability, 10},
+                        {StatisticTypes.AttackDice, 2},
+                        {StatisticTypes.MaximumAttack, 0}
+                    })
+            },
+            {
+                BikiniTop,
+                New ItemTypeDescriptor(
+                    "Bikini Top",
+                    ChrW(12),
+                    Pink,
+                    equipSlotType:=EquipSlotTypes.Chest,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.MaximumEncumbrance, 10}
+                    })
+            },
+            {
+                Thong,
+                New ItemTypeDescriptor(
+                    "Thong",
+                    ChrW(13),
+                    Pink,
+                    equipSlotType:=EquipSlotTypes.Pelvis,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.MaximumEncumbrance, 5}
+                    })
+            },
+            {
+                WoodenShield,
+                New ItemTypeDescriptor(
+                    "Wooden Shield",
+                    ChrW(11),
+                    Brown,
+                    equipSlotType:=EquipSlotTypes.Shield,
+                    statistics:=New Dictionary(Of String, Integer) From
+                    {
+                        {StatisticTypes.Encumbrance, 5},
+                        {StatisticTypes.Durability, 10},
+                        {StatisticTypes.MaximumDurability, 10},
+                        {StatisticTypes.DefendDice, 2},
+                        {StatisticTypes.MaximumDefend, 1}
                     })
             },
             {

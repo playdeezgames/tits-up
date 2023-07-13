@@ -25,6 +25,8 @@ Friend Module MapTypes
 
     Private Sub PostProcessInitialMap(map As IMap)
         RNG.FromEnumerable(map.Cells.Where(Function(x) x.Character IsNot Nothing AndAlso x.Character.CharacterType = CharacterTypes.Goblin).Select(Function(x) x.Character)).AddItem(ItemInitializer.CreateItem(map.World, ItemTypes.Key))
+        RNG.FromEnumerable(map.Cells.Where(Function(x) x.Character IsNot Nothing AndAlso x.Character.CharacterType = CharacterTypes.Goblin).Select(Function(x) x.Character)).AddItem(ItemInitializer.CreateItem(map.World, ItemTypes.BikiniTop))
+        RNG.FromEnumerable(map.Cells.Where(Function(x) x.Character IsNot Nothing AndAlso x.Character.CharacterType = CharacterTypes.Goblin).Select(Function(x) x.Character)).AddItem(ItemInitializer.CreateItem(map.World, ItemTypes.Thong))
     End Sub
 
     Private Sub InitializeInitialMap(map As IMap)

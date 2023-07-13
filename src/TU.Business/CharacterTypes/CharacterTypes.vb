@@ -67,6 +67,12 @@ Friend Module CharacterTypes
             End If
             character.AddItem(item)
         Next
+        If RNG.FromGenerator(RNG.MakeBooleanGenerator(2, 1)) Then
+            character.Equip(EquipSlotTypes.Weapon, ItemInitializer.CreateItem(character.World, ItemTypes.Club))
+        End If
+        If RNG.FromGenerator(RNG.MakeBooleanGenerator(5, 1)) Then
+            character.Equip(EquipSlotTypes.Shield, ItemInitializer.CreateItem(character.World, ItemTypes.WoodenShield))
+        End If
     End Sub
 
     Private Sub DefaultAttack(source As ICharacter, target As ICharacter)
