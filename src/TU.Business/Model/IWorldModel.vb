@@ -8,4 +8,5 @@
     ReadOnly Property TargetCharacter As ITargetCharacterModel
     ReadOnly Property Messages As IMessagesModel
     ReadOnly Property IsTitsUp As Boolean
+    ReadOnly Property HasWon As Boolean
 End Interface

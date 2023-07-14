@@ -21,4 +21,5 @@
     Friend Const Take = "Take"
     Friend Const TitsUp = "TitsUp"
     Friend Const Unequip = "Unequip"
+    Friend Const Won = "Won"
 End Module

@@ -29,6 +29,7 @@ Public Class GameController
         SetState(GameState.Equipment, New EquipmentState(Me, AddressOf SetCurrentState, context))
         SetState(GameState.EquipmentDetail, New EquipmentDetailState(Me, AddressOf SetCurrentState, context))
         SetState(GameState.Unequip, New UnequipState(Me, AddressOf SetCurrentState, context))
+        SetState(GameState.Won, New WonState(Me, AddressOf SetCurrentState, context))
         SetCurrentState(BoilerplateState.Splash, True)
     End Sub
 End Class

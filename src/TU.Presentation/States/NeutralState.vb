@@ -22,6 +22,10 @@
             SetState(GameState.TitsUp)
             Return
         End If
+        If Model.HasWon Then
+            SetState(GameState.Won)
+            Return
+        End If
         If Model.TargetCharacter.Exists Then
             SetState(GameState.InteractCharacter)
             Return
