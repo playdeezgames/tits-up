@@ -19,14 +19,12 @@
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
         HeaderText = Model.Avatar.SelectedItemFullName
-        Dim result = New List(Of (String, String)) From
-            {
-                (DropText, DropText)
-            }
+        Dim result = New List(Of (String, String))
         If Model.Avatar.Inventory.CanEquip Then
             result.Add((EquipText, EquipText))
         End If
         result.AddRange(Model.Avatar.Inventory.ItemVerbs)
+        result.Add((DropText, DropText))
         Return result
     End Function
 End Class

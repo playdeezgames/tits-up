@@ -76,16 +76,22 @@ Friend Module CharacterTypes
     End Sub
 
     Private Sub DefaultAttack(source As ICharacter, target As ICharacter)
-        source.Attack(target)
-        Dim enemies = source.AdjacentEnemies
-        Dim index = 1
-        For Each adjacentEnemy In enemies
-            If source.IsTitsUp Then
-                Exit For
-            End If
-            adjacentEnemy.Attack(source, (LightGray, $"Counter Attack {index} of {enemies.Count}"))
-            index += 1
-        Next
+        Dim damageOccurred = False
+        Do
+            While source.World.HasMessages
+                source.World.DismissMessage()
+            End While
+            damageOccurred = source.Attack(target) OrElse damageOccurred
+            Dim enemies = source.AdjacentEnemies
+            Dim index = 1
+            For Each adjacentEnemy In enemies
+                If source.IsTitsUp Then
+                    Exit For
+                End If
+                damageOccurred = adjacentEnemy.Attack(source, (LightGray, $"Counter Attack {index} of {enemies.Count}")) OrElse damageOccurred
+                index += 1
+            Next
+        Loop Until damageOccurred
     End Sub
 
     Private Sub DefaultDisengage(source As ICharacter, target As ICharacter)

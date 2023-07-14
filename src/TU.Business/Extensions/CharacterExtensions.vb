@@ -130,7 +130,8 @@ Friend Module CharacterExtensions
         Return character.EquippedItems.Where(Function(x) x.IsArmor)
     End Function
     <Extension>
-    Friend Sub DoWeaponWear(character As ICharacter, wear As Integer, message As IMessage)
+    Friend Function DoWeaponWear(character As ICharacter, wear As Integer, message As IMessage) As Boolean
+        Dim result As Boolean = False
         Dim weapons = character.Weapons
         While weapons.Any AndAlso wear > 0
             Dim weapon = RNG.FromEnumerable(weapons)
@@ -141,12 +142,15 @@ Friend Module CharacterExtensions
                 character.RemoveItem(weapon)
                 weapon.Recycle()
                 weapons = character.Weapons
+                result = True
             End If
             wear -= 1
         End While
-    End Sub
+        Return result
+    End Function
     <Extension>
-    Friend Sub DoArmorWear(character As ICharacter, wear As Integer, message As IMessage)
+    Friend Function DoArmorWear(character As ICharacter, wear As Integer, message As IMessage) As Boolean
+        Dim result As Boolean = False
         Dim armors = character.Armors
         While armors.Any AndAlso wear > 0
             Dim armor = RNG.FromEnumerable(armors)
@@ -157,12 +161,15 @@ Friend Module CharacterExtensions
                 character.RemoveItem(armor)
                 armor.Recycle()
                 armors = character.Armors
+                result = True
             End If
             wear -= 1
         End While
-    End Sub
+        Return result
+    End Function
     <Extension>
-    Friend Sub Attack(attacker As ICharacter, defender As ICharacter, Optional header As (Integer, String)? = Nothing)
+    Friend Function Attack(attacker As ICharacter, defender As ICharacter, Optional header As (Integer, String)? = Nothing) As Boolean
+        Dim result As Boolean = False
         Dim message = attacker.World.CreateMessage()
         If header IsNot Nothing Then
             message.AddLine(header.Value.Item1, header.Value.Item2)
@@ -171,11 +178,15 @@ Friend Module CharacterExtensions
         Dim attackRoll = attacker.RollAttack()
         message.AddLine(LightGray, $"{attacker.Name} rolls an attack of {attackRoll}")
         If attackRoll > 0 Then
-            attacker.DoWeaponWear(attackRoll, message)
+            If attacker.DoWeaponWear(attackRoll, message) Then
+                result = True
+            End If
             Dim defendRoll = defender.RollDefend()
             message.AddLine(LightGray, $"{defender.Name} rolls a defend of {defendRoll}")
             Dim damage = Math.Max(0, attackRoll - defendRoll)
-            defender.DoArmorWear(damage, message)
+            If defender.DoArmorWear(damage, message) Then
+                result = True
+            End If
             If damage > 0 Then
                 message.AddLine(LightGray, $"{defender.Name} takes {damage} damage")
                 defender.DoDamage(damage)
@@ -188,13 +199,15 @@ Friend Module CharacterExtensions
                     message.
                     AddLine(LightGray, $"{defender.Name} has {defender.Health} health remaining").SetSfx(If(defender.IsAvatar, Sfx.PlayerHit, Sfx.EnemyHit))
                 End If
+                result = True
             Else
                 message.AddLine(LightGray, $"{attacker.Name} misses!").SetSfx(Sfx.Miss)
             End If
         Else
             message.AddLine(LightGray, $"{attacker.Name} misses!").SetSfx(Sfx.Miss)
         End If
-    End Sub
+        Return result
+    End Function
     <Extension>
     Friend Sub TakeItem(character As ICharacter, item As IItem)
         character.Cell.RemoveItem(item)
