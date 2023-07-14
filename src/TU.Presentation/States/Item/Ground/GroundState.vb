@@ -11,12 +11,12 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        Return Model.Avatar.GroundItems.ToList
+        Return Model.Avatar.Ground.GroundItems.ToList
     End Function
 
     Public Overrides Sub OnStart()
         MyBase.OnStart()
-        If Not Model.Avatar.HasGroundItems Then
+        If Not Model.Avatar.Ground.HasGroundItems Then
             SetState(Neutral)
         End If
     End Sub

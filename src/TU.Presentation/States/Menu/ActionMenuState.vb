@@ -15,7 +15,7 @@
     End Sub
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
         Dim result As New List(Of (String, String))
-        If Model.Avatar.HasGroundItems Then
+        If Model.Avatar.Ground.HasGroundItems Then
             result.Add((GroundText, GroundText))
         End If
         If Model.Avatar.Inventory.Exists Then

@@ -16,7 +16,7 @@ Friend Module MapTypes
                     spawnCharacters:=New Dictionary(Of String, Integer) From
                                       {
                                         {CharacterTypes.Tizzy, 1},
-                                        {CharacterTypes.Goblin, 6}
+                                        {CharacterTypes.Goblin, 12}
                                       },
                     customInitializer:=AddressOf InitializeInitialMap,
                     postProcessor:=AddressOf PostProcessInitialMap)

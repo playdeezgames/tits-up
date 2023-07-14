@@ -45,7 +45,7 @@ Public Class TitsUpContext
 
     Public Overrides Sub ShowAboutContent(displayBuffer As IPixelSink, font As Font)
         With font
-            .WriteText(displayBuffer, (0, 0), "About Tits Up!!", Hue.Orange)
+            .WriteText(displayBuffer, (0, 0), "About Tits UUp!!", Hue.Orange)
             .WriteText(displayBuffer, (0, font.Height * 2), "Art:", Hue.White)
             .WriteText(displayBuffer, (0, font.Height * 3), "https://vurmux.itch.io/urizen-onebit-tileset", Hue.White)
             .WriteText(displayBuffer, (0, font.Height * 5), "A Production of TheGrumpyGameDev", Hue.White)

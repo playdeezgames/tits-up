@@ -28,18 +28,6 @@
         End Get
     End Property
 
-    Public ReadOnly Property HasGroundItems As Boolean Implements IAvatarModel.HasGroundItems
-        Get
-            Return world.Avatar.Cell.HasItems
-        End Get
-    End Property
-
-    Public ReadOnly Property GroundItems As IEnumerable(Of (String, String)) Implements IAvatarModel.GroundItems
-        Get
-            Return world.Avatar.Cell.Items.GroupBy(Function(x) x.Name).Select(Function(x) ($"{x.Key}(x{x.Count})", x.Key))
-        End Get
-    End Property
-
     Public Property SelectedItemName As String Implements IAvatarModel.SelectedItemName
         Get
             Return world.Avatar.Metadata(Metadatas.SelectedItemName)
@@ -47,12 +35,6 @@
         Set(value As String)
             world.Avatar.Metadata(Metadatas.SelectedItemName) = value
         End Set
-    End Property
-
-    Public ReadOnly Property GroundItemsByName As IEnumerable(Of (String, Integer)) Implements IAvatarModel.GroundItemsByName
-        Get
-            Return world.Avatar.Cell.Items.Where(Function(x) x.Name = SelectedItemName).Select(Function(x) (x.Name, x.Id))
-        End Get
     End Property
 
     Public Property SelectedItemId As Integer? Implements IAvatarModel.SelectedItemId
@@ -107,6 +89,24 @@
     Public ReadOnly Property AverageDefend As Double Implements IAvatarModel.AverageDefend
         Get
             Return world.Avatar.DefendDice / 6.0
+        End Get
+    End Property
+
+    Public ReadOnly Property Ground As IAvatarGroundModel Implements IAvatarModel.Ground
+        Get
+            Return New AvatarGroundModel(world.Avatar, Me)
+        End Get
+    End Property
+
+    Public ReadOnly Property SelectedItem As IAvatarSelectedItemModel Implements IAvatarModel.SelectedItem
+        Get
+            Return New AvatarSelectedItemModel()
+        End Get
+    End Property
+
+    Public ReadOnly Property Combat As IAvatarCombatModel Implements IAvatarModel.Combat
+        Get
+            Return New AvatarCombatModel()
         End Get
     End Property
 
