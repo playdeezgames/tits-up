@@ -12,4 +12,10 @@ Friend Class AvatarEquipmentModel
             Return avatar.HasEquipment
         End Get
     End Property
+
+    Public ReadOnly Property EquippedSlots As IEnumerable(Of (String, String)) Implements IAvatarEquipmentModel.EquippedSlots
+        Get
+            Return avatar.Equipment.Select(Function(x) ($"{x.Key.ToEquipSlotTypeDescriptor.Name}: {x.Value.Name}", x.Key))
+        End Get
+    End Property
 End Class

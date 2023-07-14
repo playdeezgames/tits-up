@@ -11,6 +11,8 @@
                 SetState(GameState.Ground)
             Case InventoryText
                 SetState(GameState.Inventory)
+            Case EquipmentText
+                SetState(GameState.Equipment)
         End Select
     End Sub
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))

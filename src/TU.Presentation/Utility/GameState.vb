@@ -2,6 +2,7 @@
     Friend Const ActionMenu = "ActionMenu"
     Friend Const Drop = "Drop"
     Friend Const Equip = "Equip"
+    Friend Const Equipment = "Equipment"
     Friend Const Ground = "Ground"
     Friend Const GroundDetail = "GroundDetail"
     Friend Const GroundItem = "GroundItem"
