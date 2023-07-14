@@ -21,6 +21,9 @@
         If Model.Avatar.Inventory.Exists Then
             result.Add((InventoryText, InventoryText))
         End If
+        If Model.Avatar.Equipment.Exists Then
+            result.Add((EquipmentText, EquipmentText))
+        End If
         result.Add((StatisticsText, StatisticsText))
         Return result
     End Function

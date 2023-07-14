@@ -110,6 +110,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property Equipment As IAvatarEquipmentModel Implements IAvatarModel.Equipment
+        Get
+            Return New AvatarEquipmentModel(world.Avatar)
+        End Get
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
         If Encumbrance.IsOver Then
             world.CreateMessage().AddLine(LightGray, $"{world.Avatar.Name} is carrying too much.")

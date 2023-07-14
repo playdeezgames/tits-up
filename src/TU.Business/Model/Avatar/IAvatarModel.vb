@@ -22,4 +22,5 @@
 
     ReadOnly Property Inventory As IAvatarInventoryModel
     ReadOnly Property Encumbrance As IAvatarEncumbranceModel
+    ReadOnly Property Equipment As IAvatarEquipmentModel
 End Interface
