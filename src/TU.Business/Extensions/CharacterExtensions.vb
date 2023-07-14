@@ -191,6 +191,7 @@ Friend Module CharacterExtensions
                 message.AddLine(LightGray, $"{defender.Name} takes {damage} damage")
                 defender.DoDamage(damage)
                 If defender.IsTitsUp Then
+                    attacker.AddDignity(defender.DignityBuff)
                     defender.Metadata(Metadatas.Epitaph) = $"Killed by {attacker.Name}!"
                     message.AddLine(LightGray, $"{attacker.Name} makes {defender.Name} go tits up").SetSfx(If(defender.IsAvatar, Sfx.PlayerDeath, Sfx.EnemyDeath))
                     attacker.RemoveStatistic(StatisticTypes.TargetCharacterId)
@@ -229,5 +230,17 @@ Friend Module CharacterExtensions
     Friend Sub DropItem(character As ICharacter, item As IItem)
         character.Cell.AddItem(item)
         character.RemoveItem(item)
+    End Sub
+    <Extension>
+    Friend Function Dignity(character As ICharacter) As Integer
+        Return character.Statistic(StatisticTypes.Dignity) + character.EquippedItems.Sum(Function(x) x.TryGetStatistic(StatisticTypes.DignityBuff))
+    End Function
+    <Extension>
+    Friend Function DignityBuff(character As ICharacter) As Integer
+        Return character.Statistic(StatisticTypes.DignityBuff)
+    End Function
+    <Extension>
+    Friend Sub AddDignity(character As ICharacter, dignityBuff As Integer)
+        character.Statistic(StatisticTypes.Dignity) += dignityBuff
     End Sub
 End Module

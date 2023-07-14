@@ -122,6 +122,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property Dignity As Integer Implements IAvatarModel.Dignity
+        Get
+            Return world.Avatar.Dignity
+        End Get
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
         If Encumbrance.IsOver Then
             world.CreateMessage().AddLine(LightGray, $"{world.Avatar.Name} is carrying too much.")

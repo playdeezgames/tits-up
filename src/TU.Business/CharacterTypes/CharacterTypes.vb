@@ -22,7 +22,9 @@ Friend Module CharacterTypes
                         {StatisticTypes.MaximumAttack, 1},
                         {StatisticTypes.DefendDice, 4},
                         {StatisticTypes.MaximumDefend, 2},
-                        {StatisticTypes.MaximumEncumbrance, 10}
+                        {StatisticTypes.MaximumEncumbrance, 10},
+                        {StatisticTypes.Dignity, -10},
+                        {StatisticTypes.DignityBuff, 0}
                     },
                     flags:=New List(Of String) From {FlagTypes.Avatar},
                     initializer:=AddressOf InitializeTizzy)
@@ -40,7 +42,9 @@ Friend Module CharacterTypes
                         {StatisticTypes.AttackDice, 4},
                         {StatisticTypes.MaximumAttack, 2},
                         {StatisticTypes.DefendDice, 1},
-                        {StatisticTypes.MaximumDefend, 1}
+                        {StatisticTypes.MaximumDefend, 1},
+                        {StatisticTypes.Dignity, 0},
+                        {StatisticTypes.DignityBuff, 1}
                     },
                     verbs:=New Dictionary(Of String, Action(Of ICharacter, ICharacter)) From
                     {

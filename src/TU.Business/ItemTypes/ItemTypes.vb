@@ -54,7 +54,8 @@ Friend Module ItemTypes
                     {
                         {StatisticTypes.MaximumEncumbrance, 10},
                         {StatisticTypes.MaximumDurability, 25},
-                        {StatisticTypes.Durability, 25}
+                        {StatisticTypes.Durability, 25},
+                        {StatisticTypes.DignityBuff, 10}
                     },
                     isArmor:=True,
                     fullName:=AddressOf ArmorFullName)
@@ -70,7 +71,8 @@ Friend Module ItemTypes
                     {
                         {StatisticTypes.MaximumEncumbrance, 5},
                         {StatisticTypes.MaximumDurability, 50},
-                        {StatisticTypes.Durability, 50}
+                        {StatisticTypes.Durability, 50},
+                        {StatisticTypes.DignityBuff, 10}
                     },
                     isArmor:=True,
                     fullName:=AddressOf ArmorFullName)

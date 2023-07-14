@@ -1,6 +1,8 @@
 ﻿Friend Module StatisticTypes
     Friend Const AttackDice = "AttackDice"
     Friend Const DefendDice = "DefendDice"
+    Friend Const Dignity = "Dignity"
+    Friend Const DignityBuff = "DignityBuff"
     Friend Const Durability = "Durability"
     Friend Const Encumbrance = "Encumbrance"
     Friend Const Health = "Health"

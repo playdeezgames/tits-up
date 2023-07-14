@@ -19,7 +19,7 @@
     ReadOnly Property MaximumHealth As Integer
     Property Epitaph As String
 
-
+    ReadOnly Property Dignity As Integer
     ReadOnly Property Inventory As IAvatarInventoryModel
     ReadOnly Property Encumbrance As IAvatarEncumbranceModel
     ReadOnly Property Equipment As IAvatarEquipmentModel

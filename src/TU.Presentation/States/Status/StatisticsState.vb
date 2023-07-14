@@ -15,11 +15,12 @@
     Public Overrides Sub Render(displayBuffer As IPixelSink)
         displayBuffer.Fill((0, 0), Context.ViewSize, Black)
         Dim font = Context.Font(UIFont)
-        Dim y = Context.ViewSize.Item2 \ 2 - font.Height * 4 \ 2
+        Dim y = Context.ViewSize.Item2 \ 2 - font.Height * 5 \ 2
         y = RenderLine(displayBuffer, font, y, $"Health: {Model.Avatar.Health}/{Model.Avatar.MaximumHealth}", Pink)
         y = RenderLine(displayBuffer, font, y, $"Attack: Max {Model.Avatar.MaximumAttack} Avg {Model.Avatar.AverageAttack:f2}", Red)
         y = RenderLine(displayBuffer, font, y, $"Defend: Max {Model.Avatar.MaximumDefend} Avg {Model.Avatar.AverageDefend:f2}", Green)
         y = RenderLine(displayBuffer, font, y, $"Encumbrance: {Model.Avatar.Encumbrance.Current}/{Model.Avatar.Encumbrance.Maximum}", Blue)
+        y = RenderLine(displayBuffer, font, y, $"Dignity: {Model.Avatar.Dignity}", Purple)
         Context.ShowHeader(displayBuffer, font, "Statistics", Orange, Black)
         Context.ShowStatusBar(displayBuffer, font, "Space/(A)/Esc/(B) - Go Back", Black, LightGray)
     End Sub
