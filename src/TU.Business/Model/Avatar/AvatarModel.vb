@@ -116,6 +116,12 @@
         End Get
     End Property
 
+    Public ReadOnly Property SelectedItemFullName As String Implements IAvatarModel.SelectedItemFullName
+        Get
+            Return world.Item(SelectedItemId.Value).FullName
+        End Get
+    End Property
+
     Public Sub Move(delta As (Integer, Integer)) Implements IAvatarModel.Move
         If Encumbrance.IsOver Then
             world.CreateMessage().AddLine(LightGray, $"{world.Avatar.Name} is carrying too much.")

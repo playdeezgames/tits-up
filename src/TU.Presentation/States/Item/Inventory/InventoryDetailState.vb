@@ -12,7 +12,7 @@
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, Integer))
         HeaderText = Model.Avatar.SelectedItemName
-        Return Model.Avatar.Inventory.ItemsByName.ToList
+        Return Model.Avatar.Inventory.ItemsByFullName.ToList
     End Function
     Public Overrides Sub OnStart()
         MyBase.OnStart()

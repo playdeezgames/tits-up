@@ -36,6 +36,12 @@ Public Class AvatarInventoryModel
         End Get
     End Property
 
+    Public ReadOnly Property ItemsByFullName As IEnumerable(Of (String, Integer)) Implements IAvatarInventoryModel.ItemsByFullName
+        Get
+            Return avatar.Items.Where(Function(x) x.Name = model.SelectedItemName).Select(Function(x) ($"{x.FullName}", x.Id))
+        End Get
+    End Property
+
     Public Sub DropSelected() Implements IAvatarInventoryModel.DropSelected
         Dim item = avatar.World.Item(model.SelectedItemId.Value)
         avatar.DropItem(item)

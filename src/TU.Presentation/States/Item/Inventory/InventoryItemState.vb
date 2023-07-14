@@ -18,7 +18,7 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        HeaderText = Model.Avatar.SelectedItemName
+        HeaderText = Model.Avatar.SelectedItemFullName
         Dim result = New List(Of (String, String)) From
             {
                 (DropText, DropText)
