@@ -23,6 +23,10 @@ Friend Module ItemTypes
                     statistics:=New Dictionary(Of String, Integer) From
                     {
                         {StatisticTypes.Encumbrance, 0}
+                    },
+                    verbTypes:=New Dictionary(Of String, Action(Of ICharacter, IItem)) From
+                    {
+                        {VerbTypes.Use, AddressOf UseKey}
                     })
             },
             {
@@ -137,6 +141,16 @@ Friend Module ItemTypes
                     })
             }
         }
+
+    Private Sub UseKey(character As ICharacter, item As IItem)
+        If Not character.Cell.Neighbors.Any(Function(x) x.TerrainType = TerrainTypes.LockedDoor) Then
+            character.World.CreateMessage().AddLine(Red, "You need to be near the door to unlock it!").SetSfx(Sfx.Shucks)
+            Return
+        End If
+        character.Cell.Neighbors.Single(Function(x) x.TerrainType = TerrainTypes.LockedDoor).TerrainType = TerrainTypes.Door
+        character.RemoveItem(item)
+        item.Recycle()
+    End Sub
 
     Private Function ArmorFullName(item As IItem) As String
         Return $"{item.Name}({item.Durability}/{item.MaximumDurability})"
