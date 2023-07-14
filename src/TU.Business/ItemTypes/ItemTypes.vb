@@ -40,7 +40,8 @@ Friend Module ItemTypes
                         {StatisticTypes.AttackDice, 2},
                         {StatisticTypes.MaximumAttack, 0}
                     },
-                    isWeapon:=True)
+                    isWeapon:=True,
+                    fullName:=AddressOf WeaponFullName)
             },
             {
                 BikiniTop,
@@ -52,9 +53,11 @@ Friend Module ItemTypes
                     statistics:=New Dictionary(Of String, Integer) From
                     {
                         {StatisticTypes.MaximumEncumbrance, 10},
-                        {StatisticTypes.MaximumDurability, 25}
+                        {StatisticTypes.MaximumDurability, 25},
+                        {StatisticTypes.Durability, 25}
                     },
-                    isArmor:=True)
+                    isArmor:=True,
+                    fullName:=AddressOf ArmorFullName)
             },
             {
                 Thong,
@@ -66,9 +69,11 @@ Friend Module ItemTypes
                     statistics:=New Dictionary(Of String, Integer) From
                     {
                         {StatisticTypes.MaximumEncumbrance, 5},
-                        {StatisticTypes.MaximumDurability, 50}
+                        {StatisticTypes.MaximumDurability, 50},
+                        {StatisticTypes.Durability, 50}
                     },
-                    isArmor:=True)
+                    isArmor:=True,
+                    fullName:=AddressOf ArmorFullName)
             },
             {
                 WoodenShield,
@@ -85,7 +90,8 @@ Friend Module ItemTypes
                         {StatisticTypes.DefendDice, 2},
                         {StatisticTypes.MaximumDefend, 1}
                     },
-                    isArmor:=True)
+                    isArmor:=True,
+                    fullName:=AddressOf ArmorFullName)
             },
             {
                 Meat,
@@ -129,6 +135,14 @@ Friend Module ItemTypes
                     })
             }
         }
+
+    Private Function ArmorFullName(item As IItem) As String
+        Return $"{item.Name}({item.Durability}/{item.MaximumDurability})"
+    End Function
+
+    Private Function WeaponFullName(item As IItem) As String
+        Return $"{item.Name}({item.Durability}/{item.MaximumDurability})"
+    End Function
 
     Private Sub EatRottenMeat(character As ICharacter, item As IItem)
         Dim message = character.World.CreateMessage.AddLine(LightGray, $"{character.Name} eats {item.Name}")
