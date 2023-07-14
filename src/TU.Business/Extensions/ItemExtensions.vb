@@ -46,4 +46,8 @@ Friend Module ItemExtensions
     Friend Function IsArmor(item As IItem) As Boolean
         Return item.Descriptor.IsArmor
     End Function
+    <Extension>
+    Friend Function FullName(item As IItem) As String
+        Return item.Descriptor.FullName(item)
+    End Function
 End Module

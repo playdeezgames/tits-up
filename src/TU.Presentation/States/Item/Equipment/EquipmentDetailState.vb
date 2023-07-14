@@ -12,7 +12,7 @@
     End Sub
 
     Protected Overrides Function InitializeMenuItems() As List(Of (String, String))
-        HeaderText = Model.Avatar.Equipment.SelectedEquippedItemName
+        HeaderText = Model.Avatar.Equipment.SelectedEquippedItemFullName
         Return New List(Of (String, String)) From
             {
                 (UnequipText, UnequipText)

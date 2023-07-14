@@ -15,7 +15,7 @@ Friend Class AvatarEquipmentModel
 
     Public ReadOnly Property EquippedSlots As IEnumerable(Of (String, String)) Implements IAvatarEquipmentModel.EquippedSlots
         Get
-            Return avatar.Equipment.Select(Function(x) ($"{x.Key.ToEquipSlotTypeDescriptor.Name}: {x.Value.Name}", x.Key))
+            Return avatar.Equipment.Select(Function(x) ($"{x.Key.ToEquipSlotTypeDescriptor.Name}: {x.Value.FullName}", x.Key))
         End Get
     End Property
 
@@ -28,9 +28,9 @@ Friend Class AvatarEquipmentModel
         End Set
     End Property
 
-    Public ReadOnly Property SelectedEquippedItemName As String Implements IAvatarEquipmentModel.SelectedEquippedItemName
+    Public ReadOnly Property SelectedEquippedItemFullName As String Implements IAvatarEquipmentModel.SelectedEquippedItemFullName
         Get
-            Return avatar.Equipment(SelectedSlot).Name
+            Return avatar.Equipment(SelectedSlot).FullName
         End Get
     End Property
 
