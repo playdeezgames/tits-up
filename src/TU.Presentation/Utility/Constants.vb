@@ -16,4 +16,5 @@
     Friend Const TakeText = "Take"
     Friend Const StatisticsText = "Statistics"
     Friend Const TitsUpDelaySeconds = 1.0
+    Friend Const UnequipText = "Unequip"
 End Module

@@ -3,6 +3,7 @@
     Friend Const Drop = "Drop"
     Friend Const Equip = "Equip"
     Friend Const Equipment = "Equipment"
+    Friend Const EquipmentDetail = "EquipmentDetail"
     Friend Const Ground = "Ground"
     Friend Const GroundDetail = "GroundDetail"
     Friend Const GroundItem = "GroundItem"
@@ -19,4 +20,5 @@
     Friend Const Statistics = "Statistics"
     Friend Const Take = "Take"
     Friend Const TitsUp = "TitsUp"
+    Friend Const Unequip = "Unequip"
 End Module
