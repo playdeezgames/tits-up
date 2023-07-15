@@ -6,7 +6,7 @@
     End Sub
 
     Public Overrides Sub HandleCommand(cmd As String)
-        If cmd = Command.A Then
+        If cmd = Command.A OrElse cmd = Command.B Then
             Model.Messages.Dismiss()
             SetState(Neutral)
         End If
