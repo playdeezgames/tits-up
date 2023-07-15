@@ -3,6 +3,10 @@ Imports TU.Persistence
 
 Friend Module ItemExtensions
     <Extension>
+    Friend Function CanTake(item As IItem) As Boolean
+        Return item.Descriptor.CanTake
+    End Function
+    <Extension>
     Friend Function Descriptor(item As IItem) As ItemTypeDescriptor
         Return item.ItemType.ToItemTypeDescriptor
     End Function

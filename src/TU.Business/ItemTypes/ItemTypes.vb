@@ -138,7 +138,8 @@ Friend Module ItemTypes
                     statistics:=New Dictionary(Of String, Integer) From
                     {
                         {StatisticTypes.Encumbrance, 25}
-                    })
+                    },
+                    canTake:=False)
             }
         }
 

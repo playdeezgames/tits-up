@@ -12,19 +12,19 @@ Friend Class AvatarGroundModel
 
     Public ReadOnly Property GroundItems As IEnumerable(Of (String, String)) Implements IAvatarGroundModel.GroundItems
         Get
-            Return avatar.Cell.Items.GroupBy(Function(x) x.Name).Select(Function(x) ($"{x.Key}(x{x.Count})", x.Key))
+            Return avatar.Cell.Items.Where(Function(x) x.CanTake).GroupBy(Function(x) x.Name).Select(Function(x) ($"{x.Key}(x{x.Count})", x.Key))
         End Get
     End Property
 
     Public ReadOnly Property GroundItemsByName As IEnumerable(Of (String, Integer)) Implements IAvatarGroundModel.GroundItemsByName
         Get
-            Return avatar.Cell.Items.Where(Function(x) x.Name = model.SelectedItemName).Select(Function(x) (x.Name, x.Id))
+            Return avatar.Cell.Items.Where(Function(x) x.CanTake AndAlso x.Name = model.SelectedItemName).Select(Function(x) (x.Name, x.Id))
         End Get
     End Property
 
     Public ReadOnly Property HasGroundItems As Boolean Implements IAvatarGroundModel.HasGroundItems
         Get
-            Return avatar.Cell.HasItems
+            Return avatar.Cell.Items.Any(Function(x) x.CanTake)
         End Get
     End Property
 End Class
