@@ -1,5 +1,3 @@
-Imports System.ComponentModel.Design.Serialization
-Imports System.Threading
 Imports AOS.Presentation
 Imports AOS.UI
 Imports Microsoft.Xna.Framework

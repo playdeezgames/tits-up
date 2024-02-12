@@ -1,5 +1,3 @@
-Imports AOS.UI
-
 Public Class GameController
     Inherits BaseGameController(Of IWorldModel)
 
