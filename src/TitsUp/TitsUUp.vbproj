@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TitsUp</RootNamespace>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
@@ -105,6 +105,10 @@
   <ItemGroup>
     <ProjectReference Include="..\AOS.Presentation\AOS.Presentation.vbproj" />
     <ProjectReference Include="..\TU.Presentation\TU.Presentation.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="9.0.1" />
   </ItemGroup>
 
 </Project>
