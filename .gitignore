@@ -400,3 +400,5 @@ FodyWeavers.xsd
 pub-linux/
 pub-windows/
 pub-mac/
+.claude/settings.local.json
+build/

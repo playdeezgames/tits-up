@@ -4,36 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## State of the repo
 
-"Tits Uup" ("A Game about Dying, not Boobs"; written "Tits UUp!!" in-game and in the `.vbproj`/itch slug `tits-uup`, July 2023, Weeksauce jam, never fully promoted) is a **VB.NET / MonoGame (DesktopGL) roguelike that is being ported to Odin / `js_wasm32`**. As of now there is no Odin code: everything under `src/` is the original VB.NET, which is the **reference implementation** to port from. Do not describe the game's deliberate design (pun title, bikini/thong equipment, etc.) as a problem.
+"Tits Uup" ("A Game about Dying, not Boobs"; written "Tits UUp!!" in-game, in the `.vbproj` and as the itch slug `tits-uup`; July 2023, Weeksauce jam) was a VB.NET / MonoGame (DesktopGL) roguelike. **It now has a complete Odin / `js_wasm32` port in `odin/`, `web/` and `tools/`, which is the live code.** `src/` is the original VB.NET, kept as the **reference** for the rules and the look (it still builds with `dotnet build src/src.sln`, .NET 8, `TreatWarningsAsErrors`); do not extend it. Do not describe the game's deliberate design (pun title, bikini/thong equipment, dice that only count on a six) as a problem.
 
-The agent name for this repo is `sweet-tits`. Tasks are tracked in Coxswain (project `tits-up`; register first with `agent_register`, pass `agent: "sweet-tits"`), not in ad-hoc TODO lists.
+The agent name for this repo is `sweet-tits`. Tasks are tracked in Coxswain (project `tits-up`; register first with `agent_register`, pass `agent: "sweet-tits"`), not in ad-hoc TODO lists. The repo is private and has no LICENSE on purpose.
 
-The user's knowledge base is the BOK at `/home/yermom/git/bok-of-splorr/splorr` (read `Home.md` first). Relevant notes: `Tech/Odin wasm recipe.md` (build, frame loop, input, and the shared-framebuffer variant used by Murder Hobo / Fortune Hunter, which is the closest fit here), `Tech/Release standard.md`, `Tech/Shipping to itch.io.md`, `Tech/Urizen tileset.md`, `Gotchas.md`. Add new lessons to `Gotchas.md` there, not here. Sibling Odin ports to copy structure from: `~/git/tggd-20seconds`, `~/git/hamquest`, `~/git/FortuneHunter`.
+The user's knowledge base is the BOK at `/home/yermom/git/bok-of-splorr/splorr` (read `Home.md` first). Relevant notes: `Tech/Odin wasm recipe.md` (this port follows its "platform-driven framebuffer" shape, as in Murder Hobo / Fortune Hunter), `Tech/Release standard.md`, `Tech/Shipping to itch.io.md`, `Tech/Urizen tileset.md`, `Gotchas.md`. Add new lessons to `Gotchas.md` there, not here. The BOK has no `Games/` note for this game yet.
 
-## Commands (current VB.NET build)
-
-.NET 8 SDK; no tests or linter exist. `TreatWarningsAsErrors` and `OptionStrict On` are set on the game project.
+## Commands
 
 ```bash
-dotnet build src/src.sln
-dotnet run --project src/TitsUp/TitsUUp.vbproj      # run from a build dir that has Content/, config.json
-./shippit.sh                                         # LEGACY: publishes linux/windows/mac self-contained; see warning below
+tools/test.sh               # regenerates font_data.odin, native tests (odin/game), odin check of both packages for js_wasm32
+tools/build.sh [--size]     # build/web (game.wasm, odin.js, index.html, sfx/); --size for shipping
+python3 -m http.server -d build/web 8000   # wasm cannot load from file://
+odin test odin/game -collection:tu=odin -o:speed -define:ODIN_TEST_THREADS=1 -define:ODIN_TEST_NAMES=game.fighting_ends_with_damage_dealt_and_never_hangs   # one test
+tools/make_shots.sh         # assets/screenshots/*.png from the real renderer (native, 3x)
+python3 tools/gen_fonts.py  # assets/fonts/*.json -> odin/game/font_data.odin (generated; do not hand-edit)
+tools/ship.sh [--push]      # test, size build, zip build/tits-uup-html5.zip; pushes to itch ONLY with --push. shippit.sh is a one-line wrapper
 ```
 
-`shippit.sh` only publishes to `pub-*` (git-ignored); its `butler push` lines are commented out. It does not match the Release standard (see the BOK) and must be replaced by `tools/ship.sh` + a one-line wrapper. **Never `git push`, run `butler push` or any ship script unless the user explicitly says so**; if "push" is ambiguous, ask git or itch.
+Packages are imported with `-collection:tu=odin`. Use `-vet-shadowing -vet-unused` explicitly (`odin check` does not apply them; the scripts do). Odin is `dev-2026-07` at `~/.local/bin/odin`.
 
-Planned Odin commands (from the BOK recipe; adapt once the layout exists):
+**Never `git push`, run `tools/ship.sh --push`, `shippit.sh --push` or `butler push` unless the user explicitly says so**; if "push" is ambiguous, ask git or itch. A commit-and-push command may be blocked by the permission classifier; then the user runs it.
 
-```bash
-odin build src-odin -target:js_wasm32 -out:build/web/game.wasm -o:speed   # -o:size for shipping
-cp "$(odin root)/core/sys/wasm/js/odin.js" build/web/
-python3 -m http.server -d build/web 8000     # wasm cannot load from file://
-odin test <rules pkg> -define:ODIN_TEST_THREADS=1 -define:ODIN_TEST_NAMES=pkg.test_name   # single test; test files are #+build !js
-```
+## Architecture of the Odin port
 
-Use `odin check -target:js_wasm32 -vet-shadowing -vet-unused` explicitly (`odin check` does not apply them). Seed the RNG in `main` (`rand.reset`) and bound every retry loop. Odin constant arrays cannot be indexed at runtime (declare with `:=`).
+- `odin/game` (package `game`, **no platform imports**, native-testable): `types.odin` (World: flat arrays addressed by index, `NONE = -1`), `descriptors.odin` (static content tables as enumerated arrays), `world.odin` + `rules.odin` (inventory plumbing, combat, wear, movement, verbs; messages are queued on the world), `setup.odin` (new game), `save.odin` (World as JSON, `world_valid` checks every index before a load is accepted), `rng.odin` (own SplitMix64 plus the original's dice-string roller), `gfx.odin` + `font_data.odin` (320x180 hue-index canvas, 6x8 UI font, 12x12 tiles), `ui.odin` (the whole state machine and renderer). Test files are `#+build !js`.
+- `odin/platform/web` (`#+build js`): `step` (odin.js calls it every frame with seconds), `platform_*` exports, and imports for localStorage and entropy. `web/index.html` is the JS shim: it blits `state.pixels` (RGBA) to a canvas, maps keys and the touch pad to `platform_command`, plays `sfx/*.wav` through Web Audio (the `SOUND_FILES` order must match `Sfx` in `types.odin`), and asks for fullscreen inside the key handler.
+- `Game` is one struct; the platform gives it a `Storage{get,set}` and a seed. Time only enters through `game_frame(dt)`; held commands repeat after 1.0 s then every 0.3 s, as in the original.
+- UI states mirror the original's `BaseGameController`: `State` enum, a depth-16 stack, `set_current_state/set_states`, and `state_start` standing in for `OnStart`. Pickers share one `menu` array; transient states (Embark, Move*, Take, Drop, Equip, Unequip, Neutral) only run in `state_start` and redirect.
 
-## Architecture of the VB.NET original
+Deliberate departures from the original: saves and volume are localStorage keys `tu:slot1..5` and `tu:volume` (itch shares one origin, keep keys prefixed); no Window Size option and no Quit / ConfirmQuit (it is a browser tab); the one map is hard-coded (the original's generic map-type table had a single entry and its maze generator was never used); items and equipment keep insertion order instead of .NET HashSet/Dictionary order, so the RNG draws of a given seed do not reproduce the original's; fights and the Fight verb loop are capped at 1000 rounds.
+
+## Architecture of the VB.NET original (reference)
 
 Strict layering via project references (`src/src.sln`):
 
@@ -47,12 +49,6 @@ Strict layering via project references (`src/src.sln`):
 
 The original is already a pure software framebuffer plus a command-driven state machine, so the port maps directly onto the BOK's shared-framebuffer variant: port Data+Business as a pure Odin rules package (RNG and clock passed in, natively testable), keep the state machine, draw the 320x180 buffer through one JS blit import, and replace file I/O (below).
 
-## Port-specific traps
-
-- **Saves and settings are files** (`slotN.json`, `config.json`): replace with `localStorage`, with **namespaced keys** (e.g. `tu:slot1`); every itch HTML5 game shares one origin. Window size / fullscreen options are meaningless on the web; drop or repurpose.
-- Descriptor modules use `Dictionary` iteration order and weighted RNG: port insertion order faithfully, since draw order changes outcomes.
-- Keep the credit to vurmux's Urizen tileset (shown in About) and `aboot.txt` content.
-
 ## Shipping (itch.io)
 
-Page slug `tits-uup` under `thegrumpygamedev`. The page already exists with native (windows/linux/mac) builds from the 2023 VB releases; the browser build goes to a new `html` channel and does not replace them. Follow the BOK's Release standard: `ITCH_DESCRIPTION.md`, `assets/cover.png` (630x500; present), `assets/screenshots/` (currently in `ss/`), `devlog/YYYYMMDD/`, `tools/ship.sh` (tests, `-o:size` build, zip with `index.html` at root, push only with `--push`) and a one-line `shippit.sh` wrapper. The user sets the project kind, ticks "played in the browser", and pastes page copy by hand. State the AI-assisted port honestly on the page.
+Page slug `tits-uup` under `thegrumpygamedev`; it already exists with native (windows/linux/mac) builds from 2023, and the browser build goes to a new `html` channel next to them (it does not replace them; the user ticks "played in the browser" and removes old uploads by hand). Layout follows the BOK's Release standard: `ITCH_DESCRIPTION.md` (pasted in by the user, includes the AI-assisted-port disclosure), `assets/cover.png` (630x500), `assets/screenshots/`, `devlog/YYYYMMDD/devlog.md`, `tools/ship.sh`, wrapper `shippit.sh`. The old `ss/` folder holds screenshots of the VB version and is left for the user to remove. Credit vurmux's Urizen tileset (CC0) in About and on the page.
