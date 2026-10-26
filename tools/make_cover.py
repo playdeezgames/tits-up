@@ -76,8 +76,8 @@ for c in range(COLS):
 tile(X0 + (COLS - 1) * 12, Y0 + 12 * 12, 4, "Orange")
 
 # Title panel (cells kept clear of scatter).
-title, tag = "T!ts UUp", ["A game about dying,", "not boobs (sorry!)"]
-ts = 5
+title, tag = "T!ts UUp!!", ["A game about dying,", "not boobs (sorry!)"]
+ts = 4  # 5 overran the side walls once the title gained its "!!"
 tx = (W - text_width(title, ts)) // 2
 ty = Y0 + 4 * 12 + 2
 outlined(tx, ty, title, "Red", "Pink", ts)

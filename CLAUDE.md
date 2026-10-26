@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## State of the repo
 
-"Tits Uup" ("A Game about Dying, not Boobs"; written "T!ts UUp" in-game and on the itch page (retitled Oct 2026), "Tits UUp!!" in the `.vbproj`, and the itch slug stays `tits-uup`; July 2023, Weeksauce jam) was a VB.NET / MonoGame (DesktopGL) roguelike. **It now has a complete Odin / `js_wasm32` port in `odin/`, `web/` and `tools/`, which is the live code.** `src/` is the original VB.NET, kept as the **reference** for the rules and the look (it still builds with `dotnet build src/src.sln`, .NET 8, `TreatWarningsAsErrors`); do not extend it. Do not describe the game's deliberate design (pun title, bikini/thong equipment, dice that only count on a six) as a problem.
+"Tits Uup" ("A Game about Dying, not Boobs"; written **"T!ts UUp!!" anywhere a player can read it** (in-game, page, cover, devlogs; the user, Oct 26 2026), "Tits UUp!!" in the `.vbproj`, and the itch slug stays `tits-uup`; July 2023, Weeksauce jam) was a VB.NET / MonoGame (DesktopGL) roguelike. **It now has a complete Odin / `js_wasm32` port in `odin/`, `web/` and `tools/`, which is the live code.** `src/` is the original VB.NET, kept as the **reference** for the rules and the look (it still builds with `dotnet build src/src.sln`, .NET 8, `TreatWarningsAsErrors`); do not extend it. Do not describe the game's deliberate design (pun title, bikini/thong equipment, dice that only count on a six) as a problem.
 
 The agent name for this repo is `sweet-tits`. Tasks are tracked in Coxswain (project `tits-up`; register first with `agent_register`, pass `agent: "sweet-tits"`), not in ad-hoc TODO lists. The repo is private and has no LICENSE on purpose.
 
@@ -24,7 +24,7 @@ tools/ship.sh [--push]      # test, size build, zip build/tits-uup-html5.zip; pu
 
 Packages are imported with `-collection:tu=odin`. Use `-vet-shadowing -vet-unused` explicitly (`odin check` does not apply them; the scripts do). Odin is `dev-2026-07` at `~/.local/bin/odin`.
 
-**Never `git push`, run `tools/ship.sh --push`, `shippit.sh --push` or `butler push` unless the user explicitly says so**; if "push" is ambiguous, ask git or itch. A commit-and-push command may be blocked by the permission classifier; then the user runs it.
+**Never `git push`, run `tools/ship.sh --push`, `shippit.sh --push` or `butler push` unless the user explicitly says so**; "push" always means `git push`, "ship" always means itch.io; never treat one as the other. A commit-and-push command may be blocked by the permission classifier; then the user runs it.
 
 ## Architecture of the Odin port
 

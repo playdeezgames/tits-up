@@ -1,4 +1,4 @@
-# T!ts UUp now runs in the browser
+# T!ts UUp!! now runs in the browser
 
 The 2023 Weeksauce game never made it beyond its native builds, so here it is as a web page: a straight port of the VB.NET and MonoGame original to Odin and WebAssembly.
 

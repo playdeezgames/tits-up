@@ -809,7 +809,7 @@ render :: proc(g: ^Game) {
 	#partial switch state {
 	case .Splash:
 		canvas_clear(c, .Black)
-		text := "T!ts UUp"
+		text := "T!ts UUp!!"
 		x := VIEW_WIDTH / 2 - text_width(text) / 2
 		y := VIEW_HEIGHT / 2 - UI_FONT_HEIGHT / 2
 		for dy in -1 ..= 1 {
@@ -824,7 +824,7 @@ render :: proc(g: ^Game) {
 	case .About:
 		canvas_clear(c, .Black)
 		h := UI_FONT_HEIGHT
-		draw_text(c, 0, 0, "About T!ts UUp", .Orange)
+		draw_text(c, 0, 0, "About T!ts UUp!!", .Orange)
 		draw_text(c, 0, h * 2, "Art:", .White)
 		draw_text(c, 0, h * 3, "https://vurmux.itch.io/urizen-onebit-tileset", .White)
 		draw_text(c, 0, h * 5, "A Production of TheGrumpyGameDev", .White)
