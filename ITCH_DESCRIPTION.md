@@ -8,6 +8,8 @@ A game about dying, not boobs (sorry). Tizzy has to get out of a room full of go
 
 **Description**
 
+**Latest version:** https://playdeezgames.github.io/tits-up/
+
 Tizzy wakes up in a walled-in room with a dozen goblins and a locked door. Somewhere in the room is the key, and a few things worth wearing. None of the goblins are friendly.
 
 **How it works**
